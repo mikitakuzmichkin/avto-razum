@@ -1,0 +1,23 @@
+openapi: 3.0.0
+info:
+  title: avto-razum
+  version: 1.0.0
+paths:
+  /:
+    x-yc-apigateway-any-method:
+      x-yc-apigateway-integration:
+        type: serverless_containers
+        container_id: bba2idnj58palba93bhc
+        service_account_id: ajeb6b4okrq1g7isdguh
+  /{proxy+}:
+    x-yc-apigateway-any-method:
+      parameters:
+        - name: proxy
+          in: path
+          required: true
+          schema:
+            type: string
+      x-yc-apigateway-integration:
+        type: serverless_containers
+        container_id: bba2idnj58palba93bhc
+        service_account_id: ajeb6b4okrq1g7isdguh
