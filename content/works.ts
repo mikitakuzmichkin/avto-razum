@@ -5,13 +5,41 @@ export type Work = {
   description: string;
   image: string;
   imageAlt: string;
+  /** Файл в public, например /videos/works/rama.mp4. image остаётся постером. */
+  video?: string;
+  /** Горизонтальное видео на всю ширину, вертикальное — узкая колонка 9:16. */
+  orientation?: "horizontal" | "vertical";
   wide?: boolean;
   tall?: boolean;
   featured?: boolean;
 };
 
-/** Примеры для шаблона. Свою работу добавляйте объектом в этот массив и кладите фото в public/images/works. */
+/** Свою работу добавляйте объектом в этот массив. Фото — в public/images/works, видео — в public/videos/works. */
 export const works: Work[] = [
+  {
+    slug: "suv-bort-video",
+    title: "SUV, обход после окраса",
+    service: "pokraska",
+    description:
+      "Короткий обход боковины. Тон держится на дневном свете у ворот.",
+    image: "/images/works/suv-street.jpg",
+    imageAlt: "SUV после окраса борта, горизонтальный ролик",
+    video: "/videos/works/suv-bort.mp4",
+    orientation: "horizontal",
+    featured: true,
+  },
+  {
+    slug: "furgon-ugol-video",
+    title: "Фургон, угол в кадре",
+    service: "pokraska",
+    description:
+      "Вертикальный кадр переднего угла. Переход уходит в соседнюю деталь.",
+    image: "/images/works/van-street.jpg",
+    imageAlt: "Передний угол фургона, вертикальный ролик",
+    video: "/videos/works/furgon-ugol.mp4",
+    orientation: "vertical",
+    featured: true,
+  },
   {
     slug: "sedan-polnaya",
     title: "Седан, полная покраска",

@@ -18,7 +18,7 @@ npm run dev
 
 - Контакты — [content/site.ts](content/site.ts): ООО АвтоРазум, УНП 693339740, +375 (44) 554-25-59, агрогородок Новый Двор, Центральная улица, 50, пн–сб 9:00–19:00. Если снова поставите заглушку, включите `phoneIsPlaceholder` или `addressIsPlaceholder`, чтобы выдуманные данные не попали в разметку для поиска.
 - Услуги — [content/services.ts](content/services.ts).
-- Примеры работ — фото в `public/images/works` и запись в [content/works.ts](content/works.ts).
+- Примеры работ — фото в `public/images/works`, видео в `public/videos/works`, запись в [content/works.ts](content/works.ts). У видео укажите `video` и `orientation`: `horizontal` или `vertical`. Поле `image` — постер.
 - Отзывы — [content/reviews.ts](content/reviews.ts). Сейчас это черновики для вёрстки. В schema.org они не попадают. Замените тексты до запуска.
 
 ## Telegram

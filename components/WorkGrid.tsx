@@ -3,28 +3,49 @@ import Link from "next/link";
 import { getService } from "@/content/services";
 import type { Work } from "@/content/works";
 
+function frameClass(work: Work) {
+  if (work.video && work.orientation === "vertical") return "aspect-[9/16] w-full max-w-sm";
+  if (work.video || work.wide) return "aspect-[16/9]";
+  if (work.tall) return "aspect-[3/4]";
+  return "aspect-[4/3]";
+}
+
 export function WorkGrid({ items }: { items: Work[] }) {
   return (
     <ul className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2">
       {items.map((work) => {
         const service = getService(work.service);
-        const aspect = work.wide
-          ? "aspect-[16/9]"
-          : work.tall
-            ? "aspect-[3/4]"
-            : "aspect-[4/3]";
+        const verticalVideo = Boolean(work.video) && work.orientation === "vertical";
+        const span = work.video ? (verticalVideo ? "" : "md:col-span-2") : work.wide ? "md:col-span-2" : "";
+        const frame = `relative block bg-black ${frameClass(work)}`;
         return (
-          <li key={work.slug} className={work.wide ? "md:col-span-2" : ""}>
+          <li key={work.slug} className={span}>
             <figure>
-              <Link href={`/uslugi/${work.service}`} className={`group relative block overflow-hidden ${aspect}`}>
-                <Image
-                  src={work.image}
-                  alt={work.imageAlt}
-                  fill
-                  sizes={work.wide ? "100vw" : "(min-width: 768px) 50vw, 100vw"}
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                />
-              </Link>
+              {work.video ? (
+                <div className={verticalVideo ? "md:flex md:justify-center" : undefined}>
+                  <div className={frame}>
+                    <video
+                      src={work.video}
+                      poster={work.image}
+                      controls
+                      playsInline
+                      preload="metadata"
+                      className="absolute inset-0 h-full w-full object-cover"
+                      aria-label={work.imageAlt}
+                    />
+                  </div>
+                </div>
+              ) : (
+                <Link href={`/uslugi/${work.service}`} className={`group overflow-hidden ${frame}`}>
+                  <Image
+                    src={work.image}
+                    alt={work.imageAlt}
+                    fill
+                    sizes={work.wide ? "100vw" : "(min-width: 768px) 50vw, 100vw"}
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                  />
+                </Link>
+              )}
               <figcaption className="mt-4 flex items-baseline justify-between gap-4">
                 <span className="font-serif text-2xl md:text-3xl">{work.title}</span>
                 {service ? (
