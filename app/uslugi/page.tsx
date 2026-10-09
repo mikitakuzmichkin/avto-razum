@@ -5,7 +5,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Услуги автотехцентра в Минске",
   description:
-    "Услуги AVTO RAZUM в Минске: покраска, антикор кабин и рам, электрика, тепло и шум, ремонт ЭБУ, отключение AdBlue, пневмосиденья.",
+    "Услуги AVTO RAZUM в Минске: антикор кабин и рам, электрика, тепло и шум, ремонт ЭБУ, отключение AdBlue, пневмосиденья, удаление DPF, покраска.",
   path: "/uslugi",
 });
 
@@ -16,7 +16,7 @@ export default function ServicesPage() {
         <p className="text-[11px] uppercase tracking-[0.22em] text-muted">Минск</p>
         <h1 className="mt-4 font-serif text-5xl leading-[0.95] md:text-7xl">Услуги</h1>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-          Покраска и ремонт легковых и грузовых. Кабины, рамы, электрика, тишина в салоне — каждая работа со своей страницей и записью.
+          Антикор кабин и рам и электрика легковых и грузовых. Каждая работа со своей страницей и записью.
         </p>
       </header>
       <ServiceCatalog />

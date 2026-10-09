@@ -9,7 +9,7 @@ export function pageMetadata({
   title,
   description,
   path,
-  image = "/images/services/pokraska.jpg",
+  image = "/images/services/antikor.jpg",
 }: {
   title: string;
   description: string;

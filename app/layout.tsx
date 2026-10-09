@@ -24,18 +24,19 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "AVTO RAZUM — покраска и ремонт авто в Минске",
+    default: "AVTO RAZUM — антикор и электрика в Минске",
     template: "%s — AVTO RAZUM",
   },
   description: site.description,
   applicationName: site.name,
   keywords: [
-    "покраска авто Минск",
     "антикор кабин и рам",
     "автоэлектрика Минск",
+    "покраска авто Минск",
     "ремонт ЭБУ",
     "отключение AdBlue",
     "пневмосиденья",
+    "удаление DPF",
     "AVTO RAZUM",
   ],
   alternates: {
@@ -46,23 +47,23 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ru_BY",
     siteName: site.name,
-    title: "AVTO RAZUM — покраска и ремонт авто в Минске",
+    title: "AVTO RAZUM — антикор и электрика в Минске",
     description: site.description,
     url: site.url,
     images: [
       {
-        url: "/images/services/pokraska.jpg",
+        url: "/images/services/antikor.jpg",
         width: 1280,
         height: 720,
-        alt: "Покраска авто в AVTO RAZUM",
+        alt: "Антикор кабин и рам в AVTO RAZUM",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AVTO RAZUM — покраска и ремонт авто в Минске",
+    title: "AVTO RAZUM — антикор и электрика в Минске",
     description: site.description,
-    images: ["/images/services/pokraska.jpg"],
+    images: ["/images/services/antikor.jpg"],
   },
   other: {
     "geo.region": site.regionCode,

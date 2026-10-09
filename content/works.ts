@@ -17,6 +17,25 @@ export type Work = {
 /** Свою работу добавляйте объектом в этот массив. Фото — в public/images/works, видео — в public/videos/works. */
 export const works: Work[] = [
   {
+    slug: "rama-antikor",
+    title: "Рама после антикора",
+    service: "antikor",
+    description:
+      "Силовые элементы закрыты покрытием. Металл больше не встречает соль голым.",
+    image: "/images/works/frame-shop.jpg",
+    imageAlt: "Рама грузовика после антикоррозийного покрытия",
+    featured: true,
+  },
+  {
+    slug: "pnevmosidenie",
+    title: "Пневмосиденье в кабине",
+    service: "pnevmosidenya",
+    description:
+      "Сиденье снова держит ход. Посадка собрана под длинную смену.",
+    image: "/images/works/seat-cabin.jpg",
+    imageAlt: "Отремонтированное пневмосиденье в кабине грузовика",
+  },
+  {
     slug: "suv-bort-video",
     title: "SUV, обход после окраса",
     service: "pokraska",
@@ -63,16 +82,6 @@ export const works: Work[] = [
     featured: true,
   },
   {
-    slug: "rama-antikor",
-    title: "Рама после антикора",
-    service: "antikor",
-    description:
-      "Силовые элементы закрыты покрытием. Металл больше не встречает соль голым.",
-    image: "/images/works/frame-shop.jpg",
-    imageAlt: "Рама грузовика после антикоррозийного покрытия",
-    featured: true,
-  },
-  {
     slug: "suv-bort",
     title: "SUV, окрас борта",
     service: "pokraska",
@@ -81,15 +90,6 @@ export const works: Work[] = [
     image: "/images/works/suv-street.jpg",
     imageAlt: "SUV после окраса борта у ворот мастерской",
     wide: true,
-  },
-  {
-    slug: "pnevmosidenie",
-    title: "Пневмосиденье в кабине",
-    service: "pnevmosidenya",
-    description:
-      "Сиденье снова держит ход. Посадка собрана под длинную смену.",
-    image: "/images/works/seat-cabin.jpg",
-    imageAlt: "Отремонтированное пневмосиденье в кабине грузовика",
   },
   {
     slug: "furgon-ugol",

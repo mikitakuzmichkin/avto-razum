@@ -29,12 +29,12 @@ export default function HomePage() {
               Минск · экспертный автотехцентр
             </p>
             <h1 className="mt-4 font-serif text-[clamp(2.5rem,7.2vw,5.1rem)] leading-[0.92] tracking-tight">
-              <span className="block">Покраска</span>
-              <span className="block">и ремонт авто</span>
+              <span className="block">Антикор</span>
+              <span className="block">и электрика</span>
               <span className="block">в Минске</span>
             </h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">
-              Кабины, рамы, кузов и электрика. Называем точные сроки и стоимость сразу после осмотра. Гарантия на работу.
+              Кабины, рамы и проводка. Называем точные сроки и стоимость сразу после осмотра. Гарантия на работу.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link href="/kontakty#zayavka" className={buttonClass}>
@@ -46,14 +46,14 @@ export default function HomePage() {
             </div>
           </div>
           <p className="text-sm leading-relaxed text-muted lg:col-span-4">
-            Покраска · Антикор кабин и рам · Электрика · Тепло и шум · Ремонт ЭБУ · AdBlue · Пневмосиденья
+            Антикор кабин и рам · Электрика · Тепло и шум · Ремонт ЭБУ · AdBlue · Пневмосиденья · Удаление DPF · Покраска
           </p>
         </div>
         </div>
         <div className="relative aspect-[16/9] max-h-[72vh] w-full overflow-hidden">
           <Image
-            src="/images/services/pokraska.jpg"
-            alt="Покрасочная камера: мастер наносит покрытие на седан"
+            src="/images/services/antikor.jpg"
+            alt="Рама грузовика после антикоррозийной обработки"
             fill
             priority
             sizes="100vw"

@@ -5,12 +5,15 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Logo } from "@/components/Logo";
 import { buttonClass } from "@/components/styles";
+import { services } from "@/content/services";
 
 const links = [
-  { href: "/uslugi", label: "Услуги" },
   { href: "/raboty", label: "Работы" },
   { href: "/kontakty", label: "Контакты" },
 ];
+
+const topLinkClass = "text-sm uppercase tracking-[0.14em] transition-colors";
+const tabLinkClass = "shrink-0 text-base transition-colors";
 
 export function Header() {
   const pathname = usePathname();
@@ -31,9 +34,7 @@ export function Header() {
                 href={link.href}
                 onClick={() => setOpen(false)}
                 aria-current={active ? "page" : undefined}
-                className={`text-[11px] uppercase tracking-[0.2em] transition-colors ${
-                  active ? "text-foreground" : "text-muted hover:text-foreground"
-                }`}
+                className={`${topLinkClass} ${active ? "text-foreground" : "text-muted hover:text-foreground"}`}
               >
                 {link.label}
               </Link>
@@ -46,7 +47,7 @@ export function Header() {
           </Link>
           <button
             type="button"
-            className="shrink-0 text-[11px] uppercase tracking-[0.2em] text-foreground md:hidden"
+            className="shrink-0 text-sm uppercase tracking-[0.14em] text-foreground md:hidden"
             aria-expanded={open}
             aria-controls="mobile-menu"
             onClick={() => setOpen((value) => !value)}
@@ -55,6 +56,25 @@ export function Header() {
           </button>
         </div>
       </div>
+      <nav className="overflow-x-auto border-t border-line [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" aria-label="Услуги">
+        <ul className="mx-auto flex w-max min-w-full items-center justify-center gap-x-8 px-5 py-3.5 md:px-8">
+          {services.map((service) => {
+            const href = `/uslugi/${service.slug}`;
+            const active = pathname === href;
+            return (
+              <li key={service.slug}>
+                <Link
+                  href={href}
+                  aria-current={active ? "page" : undefined}
+                  className={`${tabLinkClass} ${active ? "text-foreground" : "text-muted hover:text-foreground"}`}
+                >
+                  {service.tab ?? service.title}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
       {open ? (
         <nav id="mobile-menu" className="border-t border-line px-5 py-2 md:hidden" aria-label="Мобильное меню">
           {links.map((link) => (
@@ -62,7 +82,7 @@ export function Header() {
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="block border-b border-line py-4 text-[11px] uppercase tracking-[0.2em]"
+              className="block border-b border-line py-4 text-base"
             >
               {link.label}
             </Link>

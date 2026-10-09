@@ -15,7 +15,7 @@ export function Footer() {
         <div className="md:col-span-5">
           <Logo className="h-14 w-auto" />
           <p className="mt-6 max-w-sm text-sm leading-relaxed text-muted">
-            {site.tagline} в Минске. Покраска, антикор кабин и рам, электрика.
+            {site.tagline} в Минске. Антикор кабин и рам, электрика.
           </p>
         </div>
         <nav className="md:col-span-3" aria-label="Навигация в подвале">
@@ -57,7 +57,7 @@ export function Footer() {
           <p>
             {site.legalName} · УНП {site.unp}
           </p>
-          <p>Покраска · Антикор · Электрика</p>
+          <p>Антикор · Электрика · Покраска</p>
         </div>
       </div>
     </footer>

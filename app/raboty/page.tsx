@@ -6,7 +6,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Примеры работ",
   description:
-    "Примеры покраски, антикора рам и ремонта пневмосидений AVTO RAZUM в Минске. Живые работы добавляются в галерею.",
+    "Примеры антикора рам, ремонта пневмосидений и покраски AVTO RAZUM в Минске. Живые работы добавляются в галерею.",
   path: "/raboty",
   image: "/images/works/suv-street.jpg",
 });

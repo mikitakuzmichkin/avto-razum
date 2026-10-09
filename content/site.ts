@@ -8,7 +8,7 @@ export const site = {
   regionCode: "BY-MI",
   locality: "Новый Двор",
   description:
-    "Экспертный автотехцентр AVTO RAZUM в Минске: покраска, антикор кабин и рам, электрика, тепло и шум, ремонт ЭБУ, отключение AdBlue и пневмосиденья.",
+    "Экспертный автотехцентр AVTO RAZUM в Минске: антикор кабин и рам, электрика, тепло и шум, ремонт ЭБУ, отключение AdBlue, пневмосиденья, удаление DPF и покраска.",
   url: (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(
     /\/$/,
     "",
