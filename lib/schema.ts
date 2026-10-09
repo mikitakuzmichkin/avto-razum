@@ -11,17 +11,20 @@ export function businessSchema() {
     "@type": "AutoRepair",
     "@id": `${site.url}/#business`,
     name: site.name,
+    legalName: site.legalName,
+    taxID: site.unp,
     description: site.description,
     url: site.url,
     image: absoluteUrl("/brand/logo.svg"),
     inLanguage: "ru-BY",
     address: {
       "@type": "PostalAddress",
-      addressLocality: site.city,
+      addressLocality: site.locality,
+      addressRegion: site.addressRegion,
       addressCountry: site.countryCode,
       ...(site.addressIsPlaceholder
         ? {}
-        : { streetAddress: site.address }),
+        : { streetAddress: site.streetAddress }),
     },
     areaServed: {
       "@type": "City",

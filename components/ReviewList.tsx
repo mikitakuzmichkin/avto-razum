@@ -2,11 +2,7 @@ import type { Review } from "@/content/reviews";
 
 export function ReviewList({ items }: { items: Review[] }) {
   return (
-    <div>
-      <p className="max-w-2xl text-sm leading-relaxed text-muted">
-        Черновики для шаблона. Перед запуском замените их на реальные отзывы.
-      </p>
-      <ul className="mt-10 grid grid-cols-1 gap-10 md:grid-cols-2">
+    <ul className="grid grid-cols-1 gap-10 md:grid-cols-2">
         {items.map((review) => (
           <li key={review.id} className="border-t border-line pt-6">
             <blockquote>
@@ -17,7 +13,6 @@ export function ReviewList({ items }: { items: Review[] }) {
             </blockquote>
           </li>
         ))}
-      </ul>
-    </div>
+    </ul>
   );
 }

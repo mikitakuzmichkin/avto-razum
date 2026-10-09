@@ -17,9 +17,6 @@ export default function WorksPage() {
       <header className="max-w-3xl">
         <p className="text-[11px] uppercase tracking-[0.22em] text-muted">Галерея</p>
         <h1 className="mt-4 font-serif text-5xl leading-[0.95] md:text-7xl">Работы</h1>
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-          Кадры ниже — примеры для шаблона. Свои работы встанут на их место.
-        </p>
       </header>
       <div className="mt-14">
         <WorkGrid items={works} />

@@ -66,7 +66,7 @@ export const metadata: Metadata = {
   },
   other: {
     "geo.region": site.regionCode,
-    "geo.placename": site.city,
+    "geo.placename": site.locality,
   },
   icons: {
     icon: "/brand/icon.svg",

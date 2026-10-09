@@ -46,12 +46,17 @@ export function Footer() {
             <li>{site.phoneIsPlaceholder ? site.phone : <a href={`tel:${site.phone.replace(/[^\d+]/g, "")}`}>{site.phone}</a>}</li>
             <li className="text-muted">{site.address}</li>
             <li className="text-muted">{site.hours}</li>
+            <li className="text-muted">
+              {site.legalName}, УНП {site.unp}
+            </li>
           </ul>
         </div>
       </div>
       <div className="border-t border-line">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-5 text-[11px] uppercase tracking-[0.18em] text-muted md:flex-row md:justify-between md:px-8">
-          <p>AVTO RAZUM · {site.city}</p>
+          <p>
+            {site.legalName} · УНП {site.unp}
+          </p>
           <p>Покраска · Антикор · Электрика</p>
         </div>
       </div>

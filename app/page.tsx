@@ -18,20 +18,20 @@ export default function HomePage() {
     <>
       <JsonLd data={faqSchema()} />
       <section className="border-b border-line">
-        <div className="mx-auto grid max-w-6xl grid-cols-1 items-end gap-12 px-5 py-16 md:px-8 md:py-24 lg:grid-cols-12">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 items-end gap-10 px-5 pb-12 pt-8 md:px-8 md:pb-16 md:pt-10 lg:grid-cols-12">
           <div className="lg:col-span-8">
             <p className="text-[11px] uppercase tracking-[0.22em] text-muted">
               Минск · экспертный автотехцентр
             </p>
-            <h1 className="mt-6 font-serif text-[clamp(2.7rem,9vw,6.4rem)] leading-[0.92] tracking-tight">
+            <h1 className="mt-4 font-serif text-[clamp(2.5rem,7.2vw,5.1rem)] leading-[0.92] tracking-tight">
               <span className="block">Покраска</span>
               <span className="block">и ремонт авто</span>
               <span className="block">в Минске</span>
             </h1>
-            <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted">
-              Кабины, рамы, кузов и электрика. Спокойная работа, срок после осмотра, заявка сразу мастеру.
+            <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">
+              Кабины, рамы, кузов и электрика. Называем точные сроки и стоимость сразу после осмотра. Гарантия на работу.
             </p>
-            <div className="mt-10 flex flex-wrap gap-3">
+            <div className="mt-6 flex flex-wrap gap-3">
               <Link href="/kontakty#zayavka" className={buttonClass}>
                 Записаться
               </Link>
@@ -71,14 +71,9 @@ export default function HomePage() {
       <section className="border-t border-line" aria-labelledby="works-heading">
         <div className="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
           <div className="mb-12 flex items-end justify-between gap-6">
-            <div>
-              <h2 id="works-heading" className="font-serif text-5xl leading-none md:text-6xl">
-                Работы
-              </h2>
-              <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted">
-                Примеры для шаблона. Позже здесь будут ваши работы.
-              </p>
-            </div>
+            <h2 id="works-heading" className="font-serif text-5xl leading-none md:text-6xl">
+              Работы
+            </h2>
             <Link href="/raboty" className="shrink-0 text-[11px] uppercase tracking-[0.2em] text-muted hover:text-foreground">
               Все
             </Link>

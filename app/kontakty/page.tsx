@@ -33,7 +33,7 @@ export default function ContactsPage({ searchParams }: Props) {
         <p className="text-[11px] uppercase tracking-[0.22em] text-muted">{site.city}</p>
         <h1 className="mt-4 font-serif text-5xl leading-[0.95] md:text-7xl">Контакты</h1>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-          Заявка с формы приходит в Telegram. Пока мастер не ответил, можно написать в Instagram.
+          Заявка с формы приходит в мастеру. Или можно написать в Instagram.
         </p>
       </header>
       <div className="mt-14 grid grid-cols-1 gap-16 lg:grid-cols-12">
@@ -68,7 +68,13 @@ export default function ContactsPage({ searchParams }: Props) {
           </div>
           <div className="border-t border-line pt-5">
             <dt className="text-[11px] uppercase tracking-[0.18em] text-muted">Адрес</dt>
-            <dd className="mt-2 text-lg">{site.address}</dd>
+            <dd className="mt-2 text-lg leading-relaxed">{site.address}</dd>
+          </div>
+          <div className="border-t border-line pt-5">
+            <dt className="text-[11px] uppercase tracking-[0.18em] text-muted">Юрлицо</dt>
+            <dd className="mt-2 text-lg">
+              {site.legalName}, УНП {site.unp}
+            </dd>
           </div>
           <div className="border-t border-line pt-5">
             <dt className="text-[11px] uppercase tracking-[0.18em] text-muted">Часы</dt>
