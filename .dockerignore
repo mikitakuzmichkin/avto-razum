@@ -1,0 +1,9 @@
+node_modules
+.next
+.git
+.audi-lit.png
+scripts
+.env*
+!.env.example
+*.md
+AGENTS.md

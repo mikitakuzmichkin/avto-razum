@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FaqList } from "@/components/FaqList";
+import { HeadlightCar } from "@/components/HeadlightCar";
 import { JsonLd } from "@/components/JsonLd";
 import { LeadForm } from "@/components/LeadForm";
 import { ReviewList } from "@/components/ReviewList";
@@ -18,7 +19,11 @@ export default function HomePage() {
     <>
       <JsonLd data={faqSchema()} />
       <section className="border-b border-line">
-        <div className="mx-auto grid max-w-6xl grid-cols-1 items-end gap-10 px-5 pb-12 pt-8 md:px-8 md:pb-16 md:pt-10 lg:grid-cols-12">
+        <div className="relative">
+        <div className="pointer-events-none absolute inset-0 hidden overflow-hidden lg:block">
+          <HeadlightCar />
+        </div>
+        <div className="relative z-10 mx-auto grid max-w-6xl grid-cols-1 items-end gap-10 px-5 pb-12 pt-8 md:px-8 md:pb-16 md:pt-10 lg:grid-cols-12">
           <div className="lg:col-span-8">
             <p className="text-[11px] uppercase tracking-[0.22em] text-muted">
               Минск · экспертный автотехцентр
@@ -43,6 +48,7 @@ export default function HomePage() {
           <p className="text-sm leading-relaxed text-muted lg:col-span-4">
             Покраска · Антикор кабин и рам · Электрика · Тепло и шум · Ремонт ЭБУ · AdBlue · Пневмосиденья
           </p>
+        </div>
         </div>
         <div className="relative aspect-[16/9] max-h-[72vh] w-full overflow-hidden">
           <Image
