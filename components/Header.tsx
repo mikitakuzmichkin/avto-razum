@@ -12,6 +12,40 @@ const links = [
   { href: "/kontakty", label: "Контакты" },
 ];
 
+const brands = [
+  "MAN",
+  "Mercedes-Benz",
+  "Scania",
+  "Volvo",
+  "Renault",
+  "DAF",
+  "IVECO",
+  "Dongfeng",
+  "FAW",
+  "Foton",
+  "JAC",
+  "Shacman",
+  "Sitrak",
+];
+
+function BrandMarquee() {
+  return (
+    <div className="brand-marquee" aria-label="Марки, с которыми работаем">
+      <div className="brand-track">
+        {[0, 1].map((copy) => (
+          <ul key={copy} className="flex items-center gap-7 pr-7" aria-hidden={copy === 1}>
+            {brands.map((brand) => (
+              <li key={brand} className="text-sm uppercase tracking-[0.16em] text-muted">
+                {brand}
+              </li>
+            ))}
+          </ul>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 const topLinkClass = "text-sm uppercase tracking-[0.14em] transition-colors";
 const tabLinkClass = "shrink-0 text-base transition-colors";
 
@@ -21,27 +55,30 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-background">
-      <div className="mx-auto flex h-[4.5rem] max-w-6xl items-center justify-between gap-6 px-5 md:px-8">
+      <div className="mx-auto flex h-[4.5rem] max-w-6xl items-center gap-6 px-5 md:px-8">
         <Link href="/" aria-label="AVTO RAZUM, на главную" className="shrink-0">
           <Logo priority className="h-11 w-auto" />
         </Link>
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Основное меню">
-          {links.map((link) => {
-            const active = pathname === link.href || pathname.startsWith(`${link.href}/`);
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                aria-current={active ? "page" : undefined}
-                className={`${topLinkClass} ${active ? "text-foreground" : "text-muted hover:text-foreground"}`}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
-        </nav>
-        <div className="flex items-center gap-3">
+        <div className="hidden min-w-0 flex-1 md:block">
+          <BrandMarquee />
+        </div>
+        <div className="ml-auto flex shrink-0 items-center gap-8">
+          <nav className="hidden items-center gap-8 md:flex" aria-label="Основное меню">
+            {links.map((link) => {
+              const active = pathname === link.href || pathname.startsWith(`${link.href}/`);
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  aria-current={active ? "page" : undefined}
+                  className={`${topLinkClass} ${active ? "text-foreground" : "text-muted hover:text-foreground"}`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+          </nav>
           <Link href="/kontakty#zayavka" className="hidden md:inline-flex">
             <span className={buttonClass}>Запись</span>
           </Link>
@@ -55,6 +92,9 @@ export function Header() {
             {open ? "Закрыть" : "Меню"}
           </button>
         </div>
+      </div>
+      <div className="border-t border-line px-5 py-2.5 md:hidden">
+        <BrandMarquee />
       </div>
       <nav className="overflow-x-auto border-t border-line [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" aria-label="Услуги">
         <ul className="mx-auto flex w-max min-w-full items-center justify-center gap-x-8 px-5 py-3.5 md:px-8">

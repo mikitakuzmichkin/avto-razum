@@ -4,12 +4,10 @@ import { FaqList } from "@/components/FaqList";
 import { HeadlightCar } from "@/components/HeadlightCar";
 import { JsonLd } from "@/components/JsonLd";
 import { LeadForm } from "@/components/LeadForm";
-import { ReviewList } from "@/components/ReviewList";
 import { ServiceRows } from "@/components/ServiceList";
 import { WorkGrid } from "@/components/WorkGrid";
 import { buttonClass, buttonGhostClass } from "@/components/styles";
 import { faq } from "@/content/faq";
-import { reviews } from "@/content/reviews";
 import { services } from "@/content/services";
 import { featuredWorks } from "@/content/works";
 import { faqSchema } from "@/lib/schema";
@@ -23,8 +21,8 @@ export default function HomePage() {
         <div className="pointer-events-none absolute inset-0 hidden overflow-hidden lg:block">
           <HeadlightCar />
         </div>
-        <div className="relative z-10 mx-auto grid max-w-6xl grid-cols-1 items-end gap-10 px-5 pb-12 pt-8 md:px-8 md:pb-16 md:pt-10 lg:grid-cols-12">
-          <div className="lg:col-span-8">
+        <div className="relative z-10 mx-auto max-w-6xl px-5 pb-12 pt-8 md:px-8 md:pb-16 md:pt-10">
+          <div className="max-w-3xl">
             <p className="text-[11px] uppercase tracking-[0.22em] text-muted">
               Минск · экспертный автотехцентр
             </p>
@@ -45,9 +43,6 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
-          <p className="text-sm leading-relaxed text-muted lg:col-span-4">
-            Антикор кабин и рам · Электрика · Тепло и шум · Ремонт ЭБУ · AdBlue · Пневмосиденья · Удаление DPF · Покраска
-          </p>
         </div>
         </div>
         <div className="relative aspect-[16/9] max-h-[72vh] w-full overflow-hidden">
@@ -85,17 +80,6 @@ export default function HomePage() {
             </Link>
           </div>
           <WorkGrid items={featuredWorks} />
-        </div>
-      </section>
-
-      <section className="border-t border-line" aria-labelledby="reviews-heading">
-        <div className="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
-          <h2 id="reviews-heading" className="font-serif text-5xl leading-none md:text-6xl">
-            Отзывы
-          </h2>
-          <div className="mt-10">
-            <ReviewList items={reviews} />
-          </div>
         </div>
       </section>
 

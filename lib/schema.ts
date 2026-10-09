@@ -3,8 +3,6 @@ import { services, type Service } from "@/content/services";
 import { site } from "@/content/site";
 import { absoluteUrl } from "@/lib/seo";
 
-/** Review и AggregateRating намеренно не отдаём: отзывы в шаблоне черновые. */
-
 export function businessSchema() {
   return {
     "@context": "https://schema.org",

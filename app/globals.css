@@ -51,3 +51,42 @@ body {
   }
 }
 
+.brand-marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+}
+
+.brand-track {
+  display: flex;
+  width: max-content;
+  animation: brand-marquee 42s linear infinite;
+}
+
+.brand-marquee:hover .brand-track {
+  animation-play-state: paused;
+}
+
+@keyframes brand-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-marquee {
+    overflow-x: auto;
+    mask-image: none;
+  }
+
+  .brand-track {
+    animation: none;
+  }
+
+  .brand-track [aria-hidden="true"] {
+    display: none;
+  }
+}
+
