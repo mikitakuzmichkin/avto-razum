@@ -1,0 +1,104 @@
+import type { Metadata, Viewport } from "next";
+import type { ReactNode } from "react";
+import { Cormorant_Garamond, Manrope } from "next/font/google";
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
+import { JsonLd } from "@/components/JsonLd";
+import { site } from "@/content/site";
+import { businessSchema } from "@/lib/schema";
+import "./globals.css";
+
+const manrope = Manrope({
+  subsets: ["latin", "cyrillic"],
+  variable: "--font-manrope",
+  display: "swap",
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin", "cyrillic"],
+  weight: ["500", "600"],
+  variable: "--font-cormorant",
+  display: "swap",
+});
+
+export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
+  title: {
+    default: "AVTO RAZUM — покраска и ремонт авто в Минске",
+    template: "%s — AVTO RAZUM",
+  },
+  description: site.description,
+  applicationName: site.name,
+  keywords: [
+    "покраска авто Минск",
+    "антикор кабин и рам",
+    "автоэлектрика Минск",
+    "ремонт ЭБУ",
+    "отключение AdBlue",
+    "пневмосиденья",
+    "AVTO RAZUM",
+  ],
+  alternates: {
+    canonical: site.url,
+    languages: { ru: site.url },
+  },
+  openGraph: {
+    type: "website",
+    locale: "ru_BY",
+    siteName: site.name,
+    title: "AVTO RAZUM — покраска и ремонт авто в Минске",
+    description: site.description,
+    url: site.url,
+    images: [
+      {
+        url: "/images/services/pokraska.jpg",
+        width: 1280,
+        height: 720,
+        alt: "Покраска авто в AVTO RAZUM",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AVTO RAZUM — покраска и ремонт авто в Минске",
+    description: site.description,
+    images: ["/images/services/pokraska.jpg"],
+  },
+  other: {
+    "geo.region": site.regionCode,
+    "geo.placename": site.city,
+  },
+  icons: {
+    icon: "/brand/icon.svg",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0b0b0b",
+  colorScheme: "dark",
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: ReactNode;
+}) {
+  return (
+    <html lang="ru" className={`${manrope.variable} ${cormorant.variable} h-full antialiased`}>
+      <body className="flex min-h-full flex-col bg-background font-sans text-foreground">
+        <a
+          href="#content"
+          className="absolute left-4 top-4 z-[60] -translate-y-24 bg-foreground px-4 py-2 text-[11px] uppercase tracking-[0.18em] text-background focus:translate-y-0"
+        >
+          К содержанию
+        </a>
+        <JsonLd data={businessSchema()} />
+        <Header />
+        <main id="content" className="flex-1">
+          {children}
+        </main>
+        <Footer />
+      </body>
+    </html>
+  );
+}

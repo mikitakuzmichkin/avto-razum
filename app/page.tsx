@@ -1,0 +1,124 @@
+import Image from "next/image";
+import Link from "next/link";
+import { FaqList } from "@/components/FaqList";
+import { JsonLd } from "@/components/JsonLd";
+import { LeadForm } from "@/components/LeadForm";
+import { ReviewList } from "@/components/ReviewList";
+import { ServiceRows } from "@/components/ServiceList";
+import { WorkGrid } from "@/components/WorkGrid";
+import { buttonClass, buttonGhostClass } from "@/components/styles";
+import { faq } from "@/content/faq";
+import { reviews } from "@/content/reviews";
+import { services } from "@/content/services";
+import { featuredWorks } from "@/content/works";
+import { faqSchema } from "@/lib/schema";
+
+export default function HomePage() {
+  return (
+    <>
+      <JsonLd data={faqSchema()} />
+      <section className="border-b border-line">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 items-end gap-12 px-5 py-16 md:px-8 md:py-24 lg:grid-cols-12">
+          <div className="lg:col-span-8">
+            <p className="text-[11px] uppercase tracking-[0.22em] text-muted">
+              Минск · экспертный автотехцентр
+            </p>
+            <h1 className="mt-6 font-serif text-[clamp(2.7rem,9vw,6.4rem)] leading-[0.92] tracking-tight">
+              <span className="block">Покраска</span>
+              <span className="block">и ремонт авто</span>
+              <span className="block">в Минске</span>
+            </h1>
+            <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted">
+              Кабины, рамы, кузов и электрика. Спокойная работа, срок после осмотра, заявка сразу мастеру.
+            </p>
+            <div className="mt-10 flex flex-wrap gap-3">
+              <Link href="/kontakty#zayavka" className={buttonClass}>
+                Записаться
+              </Link>
+              <Link href="/uslugi" className={buttonGhostClass}>
+                Услуги
+              </Link>
+            </div>
+          </div>
+          <p className="text-sm leading-relaxed text-muted lg:col-span-4">
+            Покраска · Антикор кабин и рам · Электрика · Тепло и шум · Ремонт ЭБУ · AdBlue · Пневмосиденья
+          </p>
+        </div>
+        <div className="relative aspect-[16/9] max-h-[72vh] w-full overflow-hidden">
+          <Image
+            src="/images/services/pokraska.jpg"
+            alt="Покрасочная камера: мастер наносит покрытие на седан"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28" aria-labelledby="services-heading">
+        <div className="mb-10 flex items-end justify-between gap-6">
+          <h2 id="services-heading" className="font-serif text-5xl leading-none md:text-6xl">
+            Услуги
+          </h2>
+          <Link href="/uslugi" className="text-[11px] uppercase tracking-[0.2em] text-muted hover:text-foreground">
+            Все
+          </Link>
+        </div>
+        <ServiceRows />
+      </section>
+
+      <section className="border-t border-line" aria-labelledby="works-heading">
+        <div className="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
+          <div className="mb-12 flex items-end justify-between gap-6">
+            <div>
+              <h2 id="works-heading" className="font-serif text-5xl leading-none md:text-6xl">
+                Работы
+              </h2>
+              <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted">
+                Примеры для шаблона. Позже здесь будут ваши работы.
+              </p>
+            </div>
+            <Link href="/raboty" className="shrink-0 text-[11px] uppercase tracking-[0.2em] text-muted hover:text-foreground">
+              Все
+            </Link>
+          </div>
+          <WorkGrid items={featuredWorks} />
+        </div>
+      </section>
+
+      <section className="border-t border-line" aria-labelledby="reviews-heading">
+        <div className="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
+          <h2 id="reviews-heading" className="font-serif text-5xl leading-none md:text-6xl">
+            Отзывы
+          </h2>
+          <div className="mt-10">
+            <ReviewList items={reviews} />
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-line" aria-labelledby="faq-heading">
+        <div className="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
+          <h2 id="faq-heading" className="mb-10 font-serif text-5xl leading-none md:text-6xl">
+            Вопросы
+          </h2>
+          <FaqList items={faq} />
+        </div>
+      </section>
+
+      <section id="zayavka" className="border-t border-line">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-5 py-20 md:px-8 md:py-28 lg:grid-cols-2">
+          <div>
+            <p className="text-[11px] uppercase tracking-[0.22em] text-muted">Запись</p>
+            <h2 className="mt-4 font-serif text-5xl leading-none md:text-6xl">Коротко о задаче</h2>
+            <p className="mt-6 max-w-md text-base leading-relaxed text-muted">
+              Имя, телефон и что случилось с машиной. Заявка приходит мастеру в Telegram.
+            </p>
+          </div>
+          <LeadForm services={services} />
+        </div>
+      </section>
+    </>
+  );
+}
