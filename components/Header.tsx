@@ -5,27 +5,12 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Logo } from "@/components/Logo";
 import { buttonClass } from "@/components/styles";
+import { brands } from "@/content/brands";
 import { services } from "@/content/services";
 
 const links = [
   { href: "/raboty", label: "Работы" },
   { href: "/kontakty", label: "Контакты" },
-];
-
-const brands = [
-  "MAN",
-  "Mercedes-Benz",
-  "Scania",
-  "Volvo",
-  "Renault",
-  "DAF",
-  "IVECO",
-  "Dongfeng",
-  "FAW",
-  "Foton",
-  "JAC",
-  "Shacman",
-  "Sitrak",
 ];
 
 function BrandMarquee() {
@@ -35,8 +20,14 @@ function BrandMarquee() {
         {[0, 1].map((copy) => (
           <ul key={copy} className="flex items-center gap-7 pr-7" aria-hidden={copy === 1}>
             {brands.map((brand) => (
-              <li key={brand} className="text-sm uppercase tracking-[0.16em] text-muted">
-                {brand}
+              <li key={brand.slug}>
+                <Link
+                  href={`/marki/${brand.slug}`}
+                  tabIndex={copy === 1 ? -1 : undefined}
+                  className="text-sm uppercase tracking-[0.16em] text-muted hover:text-foreground"
+                >
+                  {brand.name}
+                </Link>
               </li>
             ))}
           </ul>

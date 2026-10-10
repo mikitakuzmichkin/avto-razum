@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/JsonLd";
+import { PaintPartners } from "@/components/PaintPartners";
 import { WorkGrid } from "@/components/WorkGrid";
 import { buttonClass } from "@/components/styles";
 import { getService, services } from "@/content/services";
@@ -85,6 +86,7 @@ export default async function ServicePage({ params }: Props) {
           />
         </div>
       </div>
+      {service.slug === "pokraska" ? <PaintPartners /> : null}
       {related.length > 0 ? (
         <section className="mt-20 border-t border-line pt-16" aria-labelledby="related-works">
           <h2 id="related-works" className="font-serif text-4xl md:text-5xl">

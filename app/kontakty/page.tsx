@@ -109,7 +109,7 @@ export default function ContactsPage({ searchParams }: Props) {
         href={site.routeUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-4 inline-flex items-center gap-2.5 rounded-full bg-[#3d6dff] px-5 py-3 text-[15px] font-medium text-white transition-colors hover:bg-[#2f5ef0]"
+        className="mt-4 inline-flex items-center gap-2.5 rounded-full border border-foreground bg-foreground px-5 py-3 text-[15px] font-medium text-background transition-colors hover:bg-transparent hover:text-foreground"
       >
         <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 fill-current">
           <path d="M21.7 11.3 12.7 2.3a1 1 0 0 0-1.4 0l-9 9a1 1 0 0 0 0 1.4l9 9a1 1 0 0 0 1.4 0l9-9a1 1 0 0 0 0-1.4ZM14 14.5V12h-4v3H8v-4a1 1 0 0 1 1-1h5V7.5L18.5 12 14 14.5Z" />

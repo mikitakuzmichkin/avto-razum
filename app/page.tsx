@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaqList } from "@/components/FaqList";
 import { HeadlightCar } from "@/components/HeadlightCar";
+import { HomeBrands } from "@/components/HomeBrands";
 import { JsonLd } from "@/components/JsonLd";
 import { LeadForm } from "@/components/LeadForm";
 import { ServiceRows } from "@/components/ServiceList";
@@ -68,6 +69,8 @@ export default function HomePage() {
         </div>
         <ServiceRows />
       </section>
+
+      <HomeBrands />
 
       <section className="border-t border-line" aria-labelledby="works-heading">
         <div className="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
