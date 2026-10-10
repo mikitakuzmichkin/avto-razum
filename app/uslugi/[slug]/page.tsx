@@ -38,6 +38,7 @@ export default async function ServicePage({ params }: Props) {
 
   const index = services.findIndex((item) => item.slug === service.slug);
   const related = worksFor(service.slug);
+  const topics = service.topics;
 
   return (
     <article className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
@@ -111,13 +112,13 @@ export default async function ServicePage({ params }: Props) {
           ))}
         </ul>
       ) : null}
-      {service.topics ? (
+      {topics ? (
         <div
-          className={`mt-6 grid gap-3 ${service.topics.length > 2 ? "md:grid-cols-2 lg:grid-cols-4" : "md:grid-cols-2"}`}
+          className={`mt-6 grid gap-3 ${topics.length > 2 ? "md:grid-cols-2 lg:grid-cols-4" : "md:grid-cols-2"}`}
         >
-          {service.topics.map((topic) => (
+          {topics.map((topic) => (
             <section key={topic.title} className="rounded-2xl border border-line px-6 py-6">
-              <h2 className={`font-serif leading-none ${service.topics.length > 2 ? "text-2xl" : "text-3xl"}`}>
+              <h2 className={`font-serif leading-none ${topics.length > 2 ? "text-2xl" : "text-3xl"}`}>
                 {topic.title}
               </h2>
               <p className="mt-4 text-sm leading-relaxed text-muted">{topic.text}</p>
