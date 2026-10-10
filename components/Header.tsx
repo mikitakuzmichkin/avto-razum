@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Logo } from "@/components/Logo";
 import { buttonClass } from "@/components/styles";
 import { brands } from "@/content/brands";
@@ -14,8 +14,143 @@ const links = [
 ];
 
 function BrandMarquee() {
+  const scrollerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let paused = false;
+    let dragging = false;
+    let moved = false;
+    let suppressClick = false;
+    let pointerType = "";
+    let startX = 0;
+    let lastX = 0;
+    let offset = 0;
+    let last = performance.now();
+    let frame = 0;
+    let suppressTimer = 0;
+    let ignoreHoverUntil = 0;
+
+    const loopWidth = () => el.scrollWidth / 2;
+
+    const wrap = (value: number) => {
+      const width = loopWidth();
+      if (width <= 0) return value;
+      let next = value;
+      while (next >= width) next -= width;
+      while (next < 0) next += width;
+      return next;
+    };
+
+    const tick = (now: number) => {
+      const dt = now - last;
+      last = now;
+      const width = loopWidth();
+      if (!paused && el.offsetParent !== null && width > 0) {
+        offset = wrap(offset + (dt / 42000) * width);
+        el.scrollLeft = offset;
+      }
+      frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
+
+    const onEnter = (event: PointerEvent) => {
+      if (event.pointerType !== "mouse" || performance.now() < ignoreHoverUntil) return;
+      paused = true;
+    };
+
+    const onLeave = (event: PointerEvent) => {
+      if (dragging || event.pointerType === "touch") return;
+      paused = false;
+      offset = el.scrollLeft;
+    };
+
+    const onMove = (event: PointerEvent) => {
+      if (!dragging) return;
+      const dx = event.clientX - lastX;
+      lastX = event.clientX;
+      if (Math.abs(event.clientX - startX) > 8) {
+        moved = true;
+        el.classList.add("is-dragging");
+      }
+      if (!moved || dx === 0) return;
+      offset = wrap(offset - dx);
+      el.scrollLeft = offset;
+    };
+
+    const onUp = () => {
+      if (!dragging) return;
+      dragging = false;
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onUp);
+      window.removeEventListener("pointercancel", onUp);
+      el.classList.remove("is-dragging");
+      if (moved) {
+        suppressClick = true;
+        window.clearTimeout(suppressTimer);
+        suppressTimer = window.setTimeout(() => {
+          suppressClick = false;
+        }, 400);
+      }
+      if (pointerType === "touch") ignoreHoverUntil = performance.now() + 800;
+      if (pointerType === "touch" || !el.matches(":hover")) paused = false;
+    };
+
+    const onDown = (event: PointerEvent) => {
+      if (event.button !== 0) return;
+      paused = true;
+      dragging = true;
+      moved = false;
+      pointerType = event.pointerType;
+      startX = event.clientX;
+      lastX = event.clientX;
+      offset = el.scrollLeft;
+      window.addEventListener("pointermove", onMove);
+      window.addEventListener("pointerup", onUp);
+      window.addEventListener("pointercancel", onUp);
+    };
+
+    const onClick = (event: MouseEvent) => {
+      if (!suppressClick) return;
+      suppressClick = false;
+      window.clearTimeout(suppressTimer);
+      event.preventDefault();
+      event.stopPropagation();
+    };
+
+    const onWheel = (event: WheelEvent) => {
+      if (!paused) return;
+      event.preventDefault();
+      const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
+      offset = wrap(el.scrollLeft + delta);
+      el.scrollLeft = offset;
+    };
+
+    el.addEventListener("pointerenter", onEnter);
+    el.addEventListener("pointerleave", onLeave);
+    el.addEventListener("pointerdown", onDown);
+    document.addEventListener("click", onClick, true);
+    el.addEventListener("wheel", onWheel, { passive: false });
+
+    return () => {
+      cancelAnimationFrame(frame);
+      window.clearTimeout(suppressTimer);
+      el.removeEventListener("pointerenter", onEnter);
+      el.removeEventListener("pointerleave", onLeave);
+      el.removeEventListener("pointerdown", onDown);
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onUp);
+      window.removeEventListener("pointercancel", onUp);
+      document.removeEventListener("click", onClick, true);
+      el.removeEventListener("wheel", onWheel);
+    };
+  }, []);
+
   return (
-    <div className="brand-marquee" aria-label="Марки, с которыми работаем">
+    <div ref={scrollerRef} className="brand-marquee" aria-label="Марки, с которыми работаем">
       <div className="brand-track">
         {[0, 1].map((copy) => (
           <ul key={copy} className="flex items-center gap-7 pr-7" aria-hidden={copy === 1}>

@@ -52,27 +52,25 @@ body {
 }
 
 .brand-marquee {
-  overflow: hidden;
+  overflow-x: auto;
+  scrollbar-width: none;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
   mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+}
+
+.brand-marquee::-webkit-scrollbar {
+  display: none;
+}
+
+.brand-marquee.is-dragging {
+  cursor: grabbing;
 }
 
 .brand-track {
   display: flex;
   width: max-content;
-  animation: brand-marquee 42s linear infinite;
-}
-
-.brand-marquee:hover .brand-track {
-  animation-play-state: paused;
-}
-
-@keyframes brand-marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
