@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
-import { Cormorant_Garamond, Manrope } from "next/font/google";
+import { Manrope, Spectral } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
@@ -14,10 +14,10 @@ const manrope = Manrope({
   display: "swap",
 });
 
-const cormorant = Cormorant_Garamond({
+const spectral = Spectral({
   subsets: ["latin", "cyrillic"],
   weight: ["500", "600"],
-  variable: "--font-cormorant",
+  variable: "--font-spectral",
   display: "swap",
 });
 
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0b0b0b",
+  themeColor: "#08070b",
   colorScheme: "dark",
 };
 
@@ -85,8 +85,9 @@ export default function RootLayout({
   children: ReactNode;
 }) {
   return (
-    <html lang="ru" className={`${manrope.variable} ${cormorant.variable} h-full antialiased`}>
-      <body className="flex min-h-full flex-col bg-background font-sans text-foreground">
+    <html lang="ru" className={`${manrope.variable} ${spectral.variable} h-full antialiased`}>
+      <body className="flex min-h-full flex-col font-sans text-foreground">
+        <div className="grain" aria-hidden="true" />
         <a
           href="#content"
           className="absolute left-4 top-4 z-[60] -translate-y-24 bg-foreground px-4 py-2 text-[11px] uppercase tracking-[0.18em] text-background focus:translate-y-0"

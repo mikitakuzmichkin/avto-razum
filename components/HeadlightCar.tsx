@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 const sceneCss = `
 @keyframes audi-settle {
@@ -8,11 +11,13 @@ const sceneCss = `
 }
 @keyframes audi-reveal {
   0% { opacity: 0; filter: brightness(0); }
-  22% { opacity: 1; filter: brightness(0.05); }
+  10% { opacity: 1; filter: brightness(0.06); }
+  42% { opacity: 1; filter: brightness(0.2); }
   100% { opacity: 1; filter: brightness(0.3); }
 }
 @keyframes audi-lamps {
-  0%, 26% { opacity: 0; filter: brightness(0); }
+  0%, 12% { opacity: 0; filter: brightness(0); }
+  42% { opacity: 1; filter: brightness(1.15); }
   100% { opacity: 1; filter: brightness(1.7); }
 }
 .audi-scene {
@@ -28,14 +33,22 @@ const sceneCss = `
   top: 50%;
   right: -68%;
   width: 146%;
+  transform: translateY(-50%) scale(1.04);
   transform-origin: center center;
   mix-blend-mode: lighten;
-  animation: audi-settle 8.5s cubic-bezier(0.4, 0.02, 0.2, 1) forwards;
 }
 .audi-car {
   opacity: 0;
   filter: brightness(0);
-  animation: audi-reveal 8.5s cubic-bezier(0.4, 0.02, 0.2, 1) forwards;
+}
+.audi-scene.is-ready .audi-frame {
+  animation: audi-settle 8.5s cubic-bezier(0.33, 0.15, 0.25, 1) forwards;
+}
+.audi-scene.is-ready .audi-car {
+  animation: audi-reveal 8.5s cubic-bezier(0.33, 0.15, 0.25, 1) forwards;
+}
+.audi-scene.is-ready .audi-lamps {
+  animation: audi-lamps 8.5s cubic-bezier(0.33, 0.15, 0.25, 1) forwards;
 }
 .audi-lamps {
   position: absolute;
@@ -46,7 +59,6 @@ const sceneCss = `
   opacity: 0;
   pointer-events: none;
   filter: brightness(0);
-  animation: audi-lamps 8.5s cubic-bezier(0.4, 0.02, 0.2, 1) forwards;
   -webkit-mask-image:
     radial-gradient(ellipse 7.5% 4% at 29% 49%, #000 42%, transparent 70%),
     radial-gradient(ellipse 7.5% 4% at 71% 49%, #000 42%, transparent 70%);
@@ -59,22 +71,36 @@ const sceneCss = `
   mask-composite: add;
 }
 @media (prefers-reduced-motion: reduce) {
-  .audi-frame { animation: none; transform: translateY(-50%) scale(1.02); }
-  .audi-car { animation: none; opacity: 1; filter: brightness(0.3); }
-  .audi-lamps { animation: none; opacity: 1; filter: brightness(1.7); }
+  .audi-frame,
+  .audi-scene.is-ready .audi-frame { animation: none; transform: translateY(-50%) scale(1.02); }
+  .audi-car,
+  .audi-scene.is-ready .audi-car { animation: none; opacity: 1; filter: brightness(0.3); }
+  .audi-lamps,
+  .audi-scene.is-ready .audi-lamps { animation: none; opacity: 1; filter: brightness(1.7); }
 }
 `;
 
 export function HeadlightCar() {
+  const [ready, setReady] = useState(false);
+  const carRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    const image = carRef.current;
+    if (image?.complete && image.naturalWidth > 0) setReady(true);
+  }, []);
+
   return (
-    <div className="audi-scene" aria-hidden="true">
+    <div className={ready ? "audi-scene is-ready" : "audi-scene"} aria-hidden="true">
       <style>{sceneCss}</style>
       <div className="audi-frame">
         <Image
+          ref={carRef}
           src="/images/hero/audi-front.jpg"
           alt=""
           width={1280}
           height={720}
+          priority
+          onLoad={() => setReady(true)}
           className="audi-car h-auto w-full"
         />
         <Image

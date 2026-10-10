@@ -16,7 +16,7 @@ export default function ServicesPage() {
         <p className="text-[11px] uppercase tracking-[0.22em] text-muted">Минск</p>
         <h1 className="mt-4 font-serif text-5xl leading-[0.95] md:text-7xl">Услуги</h1>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-          Антикор кабин и рам и электрика легковых и грузовых. Каждая работа со своей страницей и записью.
+          Антикор кабин и рам — для грузовиков, легковые пока не обрабатываем. Электрика легковых и грузовых. Каждая работа со своей страницей и записью.
         </p>
       </header>
       <ServiceCatalog />
