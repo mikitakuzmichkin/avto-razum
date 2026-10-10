@@ -42,6 +42,19 @@ export default async function ServicePage({ params }: Props) {
   return (
     <article className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
       <JsonLd data={serviceSchema(service)} />
+      {service.faq ? (
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: service.faq.map((item) => ({
+              "@type": "Question",
+              name: item.question,
+              acceptedAnswer: { "@type": "Answer", text: item.answer },
+            })),
+          }}
+        />
+      ) : null}
       <JsonLd
         data={breadcrumbSchema([
           { name: "Главная", path: "/" },
@@ -86,6 +99,52 @@ export default async function ServicePage({ params }: Props) {
           />
         </div>
       </div>
+      {service.highlights ? (
+        <ul
+          className={`mt-16 grid gap-3 ${service.highlights.length > 2 ? "md:grid-cols-3" : "md:grid-cols-2"}`}
+        >
+          {service.highlights.map((item) => (
+            <li key={item.title} className="rounded-2xl border border-line px-6 py-6">
+              <h2 className="text-lg">{item.title}</h2>
+              <p className="mt-3 text-sm leading-relaxed text-muted">{item.text}</p>
+            </li>
+          ))}
+        </ul>
+      ) : null}
+      {service.topics ? (
+        <div
+          className={`mt-6 grid gap-3 ${service.topics.length > 2 ? "md:grid-cols-2 lg:grid-cols-4" : "md:grid-cols-2"}`}
+        >
+          {service.topics.map((topic) => (
+            <section key={topic.title} className="rounded-2xl border border-line px-6 py-6">
+              <h2 className={`font-serif leading-none ${service.topics.length > 2 ? "text-2xl" : "text-3xl"}`}>
+                {topic.title}
+              </h2>
+              <p className="mt-4 text-sm leading-relaxed text-muted">{topic.text}</p>
+              {topic.href && topic.link ? (
+                <Link href={topic.href} className="mt-5 inline-block text-sm hover:text-muted">
+                  {topic.link}
+                </Link>
+              ) : null}
+            </section>
+          ))}
+        </div>
+      ) : null}
+      {service.faq ? (
+        <section className="mt-20 border-t border-line pt-16" aria-labelledby="service-faq">
+          <h2 id="service-faq" className="font-serif text-4xl md:text-5xl">
+            Частые вопросы
+          </h2>
+          <dl className="mt-10 divide-y divide-line">
+            {service.faq.map((item) => (
+              <div key={item.question} className="py-6">
+                <dt className="text-lg">{item.question}</dt>
+                <dd className="mt-3 max-w-3xl text-sm leading-relaxed text-muted">{item.answer}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+      ) : null}
       {service.slug === "pokraska" ? <PaintPartners /> : null}
       {related.length > 0 ? (
         <section className="mt-20 border-t border-line pt-16" aria-labelledby="related-works">

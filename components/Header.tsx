@@ -19,6 +19,8 @@ function BrandMarquee() {
   useEffect(() => {
     const el = scrollerRef.current;
     if (!el) return;
+    const track = el.querySelector(".brand-track");
+    if (track instanceof HTMLElement) track.style.animation = "none";
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     let paused = false;
