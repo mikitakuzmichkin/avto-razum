@@ -89,7 +89,7 @@ export async function POST(request: Request) {
       {
         ok: false,
         error:
-          "Заявки ещё не подключены к Telegram. Добавьте TELEGRAM_BOT_TOKEN и TELEGRAM_CHAT_ID в окружение сервера.",
+          "Не удалось отправить заявку. Попробуйте ещё раз чуть позже.",
       },
       { status: 503 },
     );
@@ -117,13 +117,13 @@ export async function POST(request: Request) {
     });
     if (!response.ok) {
       return NextResponse.json(
-        { ok: false, error: "Telegram не принял заявку. Попробуйте ещё раз чуть позже." },
+        { ok: false, error: "Не удалось отправить заявку. Попробуйте ещё раз чуть позже." },
         { status: 502 },
       );
     }
   } catch {
     return NextResponse.json(
-      { ok: false, error: "Не удалось связаться с Telegram. Попробуйте ещё раз чуть позже." },
+      { ok: false, error: "Не удалось отправить заявку. Попробуйте ещё раз чуть позже." },
       { status: 502 },
     );
   }

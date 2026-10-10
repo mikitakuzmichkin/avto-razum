@@ -53,7 +53,7 @@ export default function HomePage() {
             fill
             priority
             sizes="100vw"
-            className="object-cover"
+            className="object-cover grayscale"
           />
         </div>
       </section>
@@ -101,7 +101,7 @@ export default function HomePage() {
             <p className="text-[11px] uppercase tracking-[0.22em] text-muted">Запись</p>
             <h2 className="mt-4 font-serif text-5xl leading-none md:text-6xl">Коротко о задаче</h2>
             <p className="mt-6 max-w-md text-base leading-relaxed text-muted">
-              Имя, телефон и что случилось с машиной. Заявка приходит мастеру в Telegram.
+              Имя, телефон и что случилось с машиной. Заявка приходит мастеру.
             </p>
           </div>
           <LeadForm services={services} />

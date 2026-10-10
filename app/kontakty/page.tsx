@@ -9,7 +9,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Контакты и запись",
   description:
-    "Запись в AVTO RAZUM, Минск: форма уходит мастеру в Telegram. Instagram @avto.razum и Яндекс Карты.",
+    "Запись в AVTO RAZUM, Минск: форма приходит мастеру. Instagram @avto.razum и Яндекс Карты.",
   path: "/kontakty",
 });
 
@@ -34,7 +34,7 @@ export default function ContactsPage({ searchParams }: Props) {
         <p className="text-[11px] uppercase tracking-[0.22em] text-muted">{site.city}</p>
         <h1 className="mt-4 font-serif text-5xl leading-[0.95] md:text-7xl">Контакты</h1>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-          Заявка с формы приходит в мастеру. Или можно написать в Instagram.
+          Заявка с формы приходит мастеру. Или можно написать в Instagram.
         </p>
       </header>
       <div className="mt-14 grid grid-cols-1 gap-16 lg:grid-cols-12">

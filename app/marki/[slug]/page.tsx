@@ -81,7 +81,7 @@ export default async function BrandPage({ params }: Props) {
         </div>
         <div>
           <Image
-            src={`/images/brands/${brand.slug}-truck.jpg`}
+            src={brand.truck ?? `/images/brands/${brand.slug}-truck.jpg`}
             alt={`${brand.name}, грузовик`}
             width={1280}
             height={720}

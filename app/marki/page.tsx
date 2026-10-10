@@ -7,7 +7,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Марки грузовиков",
   description:
-    "Марки, с которыми работает AVTO RAZUM: MAN, Mercedes-Benz, Scania, Volvo, Renault, DAF, IVECO и китайские грузовики.",
+    "Марки, с которыми работает AVTO RAZUM: MAN, Mercedes-Benz, Scania, Volvo, Renault, DAF, IVECO, МАЗ, КамАЗ и китайские грузовики.",
   path: "/marki",
 });
 

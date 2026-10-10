@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { brandMark, brands, type Brand } from "@/content/brands";
 
-const cardSlugs = ["man", "mercedes-benz", "scania", "volvo", "renault", "daf", "iveco"] as const;
+const cardSlugs = ["man", "mercedes-benz", "scania", "volvo", "renault", "daf", "iveco", "maz", "kamaz"] as const;
 const chineseSlugs = ["dongfeng", "faw", "foton", "jac", "shacman", "sitrak"] as const;
 
 const cardClass =

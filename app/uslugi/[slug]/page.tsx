@@ -71,11 +71,13 @@ export default async function ServicePage({ params }: Props) {
         <span className="text-foreground">{service.title}</span>
       </nav>
       <div className="mt-10 grid grid-cols-1 items-start gap-10 lg:grid-cols-12">
-        <div className="lg:col-span-5">
+        <div className="min-w-0 lg:col-span-6">
           <p className="text-[11px] tracking-[0.18em] text-muted">
             {String(index + 1).padStart(2, "0")}
           </p>
-          <h1 className="mt-4 font-serif text-5xl leading-[0.95] md:text-6xl">{service.seoTitle}</h1>
+          <h1 className="mt-4 max-w-full text-balance font-serif text-4xl leading-[0.95] hyphens-auto sm:text-5xl lg:text-[2.5rem] xl:text-[2.85rem]">
+            {service.seoTitle}
+          </h1>
           <p className="mt-6 text-lg leading-relaxed">{service.lead}</p>
           <ul className="mt-8 space-y-3 border-t border-line pt-6">
             {service.includes.map((item) => (
@@ -89,7 +91,7 @@ export default async function ServicePage({ params }: Props) {
             Записаться
           </Link>
         </div>
-        <div className="relative aspect-[16/9] overflow-hidden lg:col-span-7 lg:aspect-auto lg:min-h-[32rem]">
+        <div className="relative aspect-[16/9] overflow-hidden border border-line lg:col-span-6 lg:aspect-auto lg:min-h-[32rem]">
           <Image
             src={service.image}
             alt={service.imageAlt}
