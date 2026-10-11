@@ -27,7 +27,7 @@ export default function HomePage() {
             <p className="text-[11px] uppercase tracking-[0.22em] text-muted">
               Минск · экспертный автотехцентр
             </p>
-            <h1 className="mt-4 font-serif text-[clamp(2.5rem,7.2vw,5.1rem)] leading-[0.92] tracking-tight">
+            <h1 className="mt-4 font-serif text-[clamp(2.5rem,7.2vw,5.1rem)] leading-[0.92]">
               <span className="block">Антикор</span>
               <span className="block">и электрика</span>
               <span className="block">в Минске</span>
