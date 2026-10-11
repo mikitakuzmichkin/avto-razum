@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { SiteImage } from "@/components/SiteImage";
 import type { EcuListing } from "@/content/ebu-listings";
 import { ecuListings } from "@/content/ebu-listings";
 
@@ -9,7 +9,7 @@ function ListingCard({ item }: { item: EcuListing }) {
       <div className={photos.length > 1 ? "grid grid-cols-2 gap-2" : undefined}>
         {photos.map((photo) => (
           <div key={photo.image} className="relative aspect-[4/3] overflow-hidden border border-line bg-white">
-            <Image
+            <SiteImage
               src={photo.image}
               alt={photo.imageAlt}
               fill

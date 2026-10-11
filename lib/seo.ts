@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { site } from "@/content/site";
 
 export function absoluteUrl(path: string) {
-  return new URL(path, `${site.url}/`).toString();
+  const base = site.url.endsWith("/") ? site.url : `${site.url}/`;
+  const relative = path === "/" ? "" : path.replace(/^\//, "");
+  return new URL(relative, base).toString();
 }
 
 export function pageMetadata({

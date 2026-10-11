@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { SiteImage } from "@/components/SiteImage";
 import { useEffect, useRef, useState } from "react";
 
 const sceneCss = `
@@ -93,7 +93,7 @@ export function HeadlightCar() {
     <div className={ready ? "audi-scene is-ready" : "audi-scene"} aria-hidden="true">
       <style>{sceneCss}</style>
       <div className="audi-frame">
-        <Image
+        <SiteImage
           ref={carRef}
           src="/images/hero/audi-front.jpg"
           alt=""
@@ -103,7 +103,7 @@ export function HeadlightCar() {
           onLoad={() => setReady(true)}
           className="audi-car h-auto w-full"
         />
-        <Image
+        <SiteImage
           src="/images/hero/audi-front.jpg"
           alt=""
           width={1280}

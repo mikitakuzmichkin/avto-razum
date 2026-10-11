@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import { BookingForm } from "@/components/BookingForm";
+import { SiteImage } from "@/components/SiteImage";
 import { Suspense } from "react";
-import { LeadForm } from "@/components/LeadForm";
 import { services } from "@/content/services";
 import { site } from "@/content/site";
 import { pageMetadata } from "@/lib/seo";
@@ -13,21 +13,7 @@ export const metadata: Metadata = pageMetadata({
   path: "/kontakty",
 });
 
-type Props = {
-  searchParams: Promise<{ service?: string }>;
-};
-
-async function BookingForm({
-  searchParams,
-}: {
-  searchParams: Promise<{ service?: string }>;
-}) {
-  const { service } = await searchParams;
-  const selected = services.some((item) => item.slug === service) ? service : "";
-  return <LeadForm key={selected || "empty"} services={services} defaultService={selected} />;
-}
-
-export default function ContactsPage({ searchParams }: Props) {
+export default function ContactsPage() {
   return (
     <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
       <header className="max-w-3xl">
@@ -86,7 +72,7 @@ export default function ContactsPage({ searchParams }: Props) {
           <h2 className="font-serif text-4xl">Заявка</h2>
           <div className="mt-8">
             <Suspense fallback={<p className="text-sm text-muted">Открываем форму…</p>}>
-              <BookingForm searchParams={searchParams} />
+              <BookingForm services={services} />
             </Suspense>
           </div>
         </div>
@@ -97,7 +83,7 @@ export default function ContactsPage({ searchParams }: Props) {
         rel="noopener noreferrer"
         className="mt-16 block w-[calc(100%/1.3)] overflow-hidden border border-line"
       >
-        <Image
+        <SiteImage
           src={site.mapImage}
           alt="Яндекс Карта: агрогородок Новый Двор, Центральная улица, 50"
           width={1024}

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { SiteImage } from "@/components/SiteImage";
 
 const partners = [
   { src: "/images/partners/ergo-hq.jpg", name: "ERGO", width: 800, height: 200 },
@@ -31,7 +31,7 @@ export function PaintPartners() {
             {partners.map((partner) => (
               <li key={partner.src}>
                 <span className="flex h-16 items-center justify-center rounded-xl bg-white px-3">
-                  <Image
+                  <SiteImage
                     src={partner.src}
                     alt={partner.name}
                     width={partner.width}
@@ -49,7 +49,7 @@ export function PaintPartners() {
             {certificates.map((certificate) => (
               <li key={certificate.src}>
                 <a href={certificate.src} target="_blank" rel="noopener noreferrer">
-                  <Image
+                  <SiteImage
                     src={certificate.src}
                     alt={certificate.name}
                     width={certificate.width}

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { SiteImage } from "@/components/SiteImage";
 import Link from "next/link";
 import { brandMark, brands, type Brand } from "@/content/brands";
 
@@ -18,7 +18,7 @@ function brandBySlug(slug: string): Brand {
 function MarkImage({ slug }: { slug: string }) {
   return (
     <span className="flex h-20 w-full items-center justify-center rounded-lg bg-white px-3">
-      <Image
+      <SiteImage
         src={brandMark(slug)}
         alt=""
         width={720}
@@ -77,7 +77,7 @@ export function HomeBrands() {
                   aria-label={brand.name}
                   className="flex h-14 items-center rounded-xl bg-white px-3.5 transition-opacity hover:opacity-80"
                 >
-                  <Image
+                  <SiteImage
                     src={brandMark(brand.slug)}
                     alt=""
                     width={720}

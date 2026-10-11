@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import { SiteImage } from "@/components/SiteImage";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/JsonLd";
@@ -93,7 +93,7 @@ export default async function ServicePage({ params }: Props) {
           </Link>
         </div>
         <div className="relative aspect-[16/9] overflow-hidden border border-line lg:col-span-6 lg:aspect-auto lg:min-h-[32rem]">
-          <Image
+          <SiteImage
             src={service.image}
             alt={service.imageAlt}
             fill

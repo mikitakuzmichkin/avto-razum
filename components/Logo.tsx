@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { SiteImage } from "@/components/SiteImage";
 
 type LogoProps = {
   className?: string;
@@ -7,7 +7,7 @@ type LogoProps = {
 
 export function Logo({ className = "h-11 w-auto", priority = false }: LogoProps) {
   return (
-    <Image
+    <SiteImage
       src="/brand/logo.svg"
       alt=""
       width={878}

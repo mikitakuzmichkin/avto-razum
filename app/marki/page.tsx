@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import { SiteImage } from "@/components/SiteImage";
 import Link from "next/link";
 import { brandMark, brands } from "@/content/brands";
 import { pageMetadata } from "@/lib/seo";
@@ -24,7 +24,7 @@ export default function BrandsPage() {
           <li key={brand.slug} className="bg-background">
             <Link href={`/marki/${brand.slug}`} className="flex items-center gap-4 px-6 py-6 text-lg hover:bg-white/5">
               <span className="flex h-10 w-36 shrink-0 items-center justify-center rounded-lg bg-white px-2">
-                <Image
+                <SiteImage
                   src={brandMark(brand.slug)}
                   alt=""
                   width={720}

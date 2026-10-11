@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
 import { site } from "@/content/site";
+import { publicPath } from "@/lib/public-path";
 import { businessSchema } from "@/lib/schema";
 import "./globals.css";
 
@@ -70,7 +71,7 @@ export const metadata: Metadata = {
     "geo.placename": site.locality,
   },
   icons: {
-    icon: "/brand/icon.svg",
+    icon: publicPath("/brand/icon.svg"),
   },
 };
 

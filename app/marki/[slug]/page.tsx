@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import { SiteImage } from "@/components/SiteImage";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/JsonLd";
@@ -54,7 +54,7 @@ export default async function BrandPage({ params }: Props) {
       </nav>
       <div className="mt-10 grid grid-cols-1 items-start gap-12 lg:grid-cols-2">
         <div>
-          <Image
+          <SiteImage
             src={brandMark(brand.slug)}
             alt=""
             width={240}
@@ -80,7 +80,7 @@ export default async function BrandPage({ params }: Props) {
           </Link>
         </div>
         <div>
-          <Image
+          <SiteImage
             src={brand.truck ?? `/images/brands/${brand.slug}-truck.jpg`}
             alt={`${brand.name}, грузовик`}
             width={1280}

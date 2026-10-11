@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { SiteImage } from "@/components/SiteImage";
 import Link from "next/link";
 import { services } from "@/content/services";
 
@@ -57,7 +57,7 @@ export function ServiceCatalog() {
               href={`/uslugi/${service.slug}`}
               className={`group relative block aspect-[16/9] overflow-hidden ${index % 2 === 1 ? "lg:order-1" : ""}`}
             >
-              <Image
+              <SiteImage
                 src={service.image}
                 alt={service.imageAlt}
                 fill

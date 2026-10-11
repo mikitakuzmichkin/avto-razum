@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { SiteImage } from "@/components/SiteImage";
 import Link from "next/link";
 import { FaqList } from "@/components/FaqList";
 import { HeadlightCar } from "@/components/HeadlightCar";
@@ -47,7 +47,7 @@ export default function HomePage() {
         </div>
         </div>
         <div className="relative aspect-[16/9] max-h-[72vh] w-full overflow-hidden">
-          <Image
+          <SiteImage
             src="/images/services/antikor.jpg"
             alt="Рама грузовика после антикоррозийной обработки"
             fill

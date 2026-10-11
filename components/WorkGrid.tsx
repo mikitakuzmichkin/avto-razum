@@ -1,4 +1,5 @@
-import Image from "next/image";
+import { SiteImage } from "@/components/SiteImage";
+import { publicPath } from "@/lib/public-path";
 import Link from "next/link";
 import { getService } from "@/content/services";
 import type { Work } from "@/content/works";
@@ -25,8 +26,8 @@ export function WorkGrid({ items }: { items: Work[] }) {
                 <div className={verticalVideo ? "md:flex md:justify-center" : undefined}>
                   <div className={frame}>
                     <video
-                      src={work.video}
-                      poster={work.image}
+                      src={publicPath(work.video)}
+                      poster={publicPath(work.image)}
                       controls
                       playsInline
                       preload="metadata"
@@ -37,7 +38,7 @@ export function WorkGrid({ items }: { items: Work[] }) {
                 </div>
               ) : (
                 <Link href={`/uslugi/${work.service}`} className={`group overflow-hidden ${frame}`}>
-                  <Image
+                  <SiteImage
                     src={work.image}
                     alt={work.imageAlt}
                     fill
