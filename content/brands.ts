@@ -15,13 +15,16 @@ export type Brand = {
   };
 };
 
-const chineseWorks = [
-  "Антикоррозийная обработка рамы, кабины и скрытых полостей",
-  "Утепление и шумоизоляция кабины",
-  "Установка пневмосидений вместо механических",
-  "Отключение AdBlue эмулятором и программно",
+const anticorrWork = "Антикоррозийная обработка рамы, кабины и скрытых полостей";
+const insulationWork = "Утепление и шумоизоляция кабины";
+const seatsWork = "Установка пневмосидений вместо механических";
+const newWorks = [
+  "Отключение AdBlue эмулятором",
+  "Отключение AdBlue программно",
   "Ремонт электронных блоков управления",
 ];
+
+const chineseWorks = [anticorrWork, insulationWork, ...newWorks, seatsWork];
 
 const chineseNotes = [
   "Антикор лучше сделать сразу после покупки, до первой зимы с реагентами.",
@@ -39,7 +42,7 @@ function chineseBrand(slug: string, name: string): Brand {
   };
 }
 
-export const brands: Brand[] = [
+const brandList: Brand[] = [
   {
     slug: "man",
     name: "MAN",
@@ -283,6 +286,18 @@ export const brands: Brand[] = [
   chineseBrand("shacman", "Shacman"),
   chineseBrand("sitrak", "Sitrak"),
 ];
+
+export const brands: Brand[] = brandList.map((brand) => {
+  const skipped = new Set([
+    anticorrWork,
+    insulationWork,
+    seatsWork,
+    "Отключение AdBlue эмулятором и программно",
+    ...newWorks,
+  ]);
+  const rest = brand.works.filter((work) => !skipped.has(work));
+  return { ...brand, works: [anticorrWork, insulationWork, ...newWorks, ...rest, seatsWork] };
+});
 
 const brandMarks: Record<string, string> = {
   man: "/images/brands/man-hq.jpg",
