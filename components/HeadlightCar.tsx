@@ -11,9 +11,9 @@ const sceneCss = `
 }
 @keyframes audi-reveal {
   0% { opacity: 0; filter: brightness(0); }
-  10% { opacity: 1; filter: brightness(0.06); }
-  42% { opacity: 1; filter: brightness(0.2); }
-  100% { opacity: 1; filter: brightness(0.3); }
+  10% { opacity: 1; filter: brightness(0.12); }
+  42% { opacity: 1; filter: brightness(0.38); }
+  100% { opacity: 1; filter: brightness(0.62); }
 }
 @keyframes audi-lamps {
   0%, 12% { opacity: 0; filter: brightness(0); }
@@ -74,7 +74,7 @@ const sceneCss = `
   .audi-frame,
   .audi-scene.is-ready .audi-frame { animation: none; transform: translateY(-50%) scale(1.02); }
   .audi-car,
-  .audi-scene.is-ready .audi-car { animation: none; opacity: 1; filter: brightness(0.3); }
+  .audi-scene.is-ready .audi-car { animation: none; opacity: 1; filter: brightness(0.62); }
   .audi-lamps,
   .audi-scene.is-ready .audi-lamps { animation: none; opacity: 1; filter: brightness(1.7); }
 }
@@ -95,7 +95,7 @@ export function HeadlightCar() {
       <div className="audi-frame">
         <SiteImage
           ref={carRef}
-          src="/images/hero/audi-front.jpg"
+          src="/images/hero/audi-blue.jpg"
           alt=""
           width={1280}
           height={720}
@@ -104,7 +104,7 @@ export function HeadlightCar() {
           className="audi-car h-auto w-full"
         />
         <SiteImage
-          src="/images/hero/audi-front.jpg"
+          src="/images/hero/audi-blue.jpg"
           alt=""
           width={1280}
           height={720}
