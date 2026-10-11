@@ -10,6 +10,7 @@ import { buttonClass } from "@/components/styles";
 import { getService, services } from "@/content/services";
 import { worksFor } from "@/content/works";
 import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
+import { marked } from "@/lib/marked";
 import { pageMetadata } from "@/lib/seo";
 
 type Props = {
@@ -77,9 +78,9 @@ export default async function ServicePage({ params }: Props) {
             {String(index + 1).padStart(2, "0")}
           </p>
           <h1 className="mt-4 max-w-full text-balance font-serif text-4xl leading-[1.2] hyphens-auto sm:text-5xl lg:text-[2.5rem] xl:text-[2.85rem]">
-            {service.seoTitle}
+            {marked(service.seoTitle, service.titleMarks)}
           </h1>
-          <p className="mt-6 text-lg leading-relaxed">{service.lead}</p>
+          <p className="mt-6 text-lg leading-relaxed">{marked(service.lead, service.leadMarks)}</p>
           <ul className="mt-8 space-y-3 border-t border-line pt-6">
             {service.includes.map((item) => (
               <li key={item} className="flex gap-4 text-sm">

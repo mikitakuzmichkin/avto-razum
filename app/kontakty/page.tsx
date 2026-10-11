@@ -4,6 +4,7 @@ import { SiteImage } from "@/components/SiteImage";
 import { Suspense } from "react";
 import { services } from "@/content/services";
 import { site } from "@/content/site";
+import { marked } from "@/lib/marked";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -19,8 +20,8 @@ export default function ContactsPage() {
       <header className="max-w-3xl">
         <p className="text-[11px] uppercase tracking-[0.22em] text-muted">{site.city}</p>
         <h1 className="mt-4 font-serif text-5xl leading-[0.95] md:text-7xl">Контакты</h1>
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-          Заявка с формы приходит мастеру. Или можно написать в Instagram.
+        <p className="mt-6 max-w-2xl text-lg leading-relaxed">
+          {marked("Заявка с формы приходит мастеру. Или можно написать в Instagram.", ["мастеру", "Instagram"])}
         </p>
       </header>
       <div className="mt-14 grid grid-cols-1 gap-16 lg:grid-cols-12">

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #08070b;
+  --background: #000;
   --foreground: #f4eee4;
   --muted: #b3ab9e;
   --line: rgba(255, 255, 255, 0.14);
@@ -42,7 +42,7 @@ body {
 
 ::selection {
   background: #f4eee4;
-  color: #08070b;
+  color: #000;
 }
 
 .grain {

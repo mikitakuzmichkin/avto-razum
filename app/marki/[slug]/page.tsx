@@ -6,7 +6,22 @@ import { JsonLd } from "@/components/JsonLd";
 import { buttonClass } from "@/components/styles";
 import { brandMark, brands, getBrand } from "@/content/brands";
 import { breadcrumbSchema } from "@/lib/schema";
+import { marked } from "@/lib/marked";
 import { pageMetadata } from "@/lib/seo";
+
+const leadMarks = [
+  "Отключение AdBlue эмулятором и программно",
+  "ремонт электронных блоков управления",
+  "сажевого фильтра",
+  "Координатор C007",
+  "250 и 500 kb",
+  "блоков EDC",
+  "дверных модулей",
+  "блоков MR, MCM, ADM, FR и KI",
+  "тонкой защитой металла",
+  "холодными кабинами",
+  "механическими сиденьями",
+];
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -63,8 +78,10 @@ export default async function BrandPage({ params }: Props) {
             className="rounded-lg bg-white"
             style={{ width: "auto", height: "2.25rem", aspectRatio: "auto" }}
           />
-          <h1 className="mt-6 font-serif text-5xl leading-[0.95] md:text-6xl">{brand.title}</h1>
-          <p className="mt-6 text-lg leading-relaxed text-muted">{brand.lead}</p>
+          <h1 className="mt-6 font-serif text-5xl leading-[0.95] md:text-6xl">
+            {marked(brand.title, brand.title.includes(": ") ? [brand.title.split(": ").slice(1).join(": ")] : [])}
+          </h1>
+          <p className="mt-6 text-lg leading-relaxed">{marked(brand.lead, leadMarks)}</p>
           {brand.notes ? (
             <div className="mt-8 border border-line p-6">
               <p className="text-[11px] uppercase tracking-[0.18em] text-muted">Важно знать</p>

@@ -1,6 +1,7 @@
 import { SiteImage } from "@/components/SiteImage";
 import Link from "next/link";
 import { services } from "@/content/services";
+import { marked } from "@/lib/marked";
 
 export function ServiceRows() {
   return (
@@ -45,7 +46,9 @@ export function ServiceCatalog() {
                   {service.title}
                 </Link>
               </h2>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-muted">{service.lead}</p>
+              <p className="mt-6 max-w-xl text-base leading-relaxed">
+                {marked(service.lead, service.leadMarks)}
+              </p>
               <Link
                 href={`/uslugi/${service.slug}`}
                 className="mt-8 inline-flex text-[11px] uppercase tracking-[0.2em] underline decoration-white/30 underline-offset-4 hover:decoration-white"
