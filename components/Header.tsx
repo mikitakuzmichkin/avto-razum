@@ -183,6 +183,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-background">
+      <div className="header-grain" aria-hidden="true" />
       <div className="mx-auto flex h-[4.5rem] max-w-6xl items-center gap-6 px-5 md:px-8">
         <Link href="/" aria-label="AVTO RAZUM, на главную" className="shrink-0">
           <Logo priority className="h-11 w-auto" />

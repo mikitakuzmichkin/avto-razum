@@ -18,8 +18,8 @@ export default function HomePage() {
     <>
       <JsonLd data={faqSchema()} />
       <section className="border-b border-line">
-        <div className="relative isolate bg-background">
-        <div className="pointer-events-none absolute inset-0 hidden overflow-hidden lg:block">
+        <div className="relative isolate bg-black">
+        <div className="pointer-events-none absolute inset-0 z-0 hidden overflow-hidden lg:block">
           <HeadlightCar />
         </div>
         <div className="relative z-10 mx-auto max-w-6xl px-5 pb-12 pt-8 md:px-8 md:pb-16 md:pt-10">
