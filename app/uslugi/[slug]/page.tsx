@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/JsonLd";
+import { EcuListings } from "@/components/EcuListings";
 import { PaintPartners } from "@/components/PaintPartners";
 import { WorkGrid } from "@/components/WorkGrid";
 import { buttonClass } from "@/components/styles";
@@ -75,7 +76,7 @@ export default async function ServicePage({ params }: Props) {
           <p className="text-[11px] tracking-[0.18em] text-muted">
             {String(index + 1).padStart(2, "0")}
           </p>
-          <h1 className="mt-4 max-w-full text-balance font-serif text-4xl leading-[0.95] hyphens-auto sm:text-5xl lg:text-[2.5rem] xl:text-[2.85rem]">
+          <h1 className="mt-4 max-w-full text-balance font-serif text-4xl leading-[1.2] hyphens-auto sm:text-5xl lg:text-[2.5rem] xl:text-[2.85rem]">
             {service.seoTitle}
           </h1>
           <p className="mt-6 text-lg leading-relaxed">{service.lead}</p>
@@ -148,6 +149,7 @@ export default async function ServicePage({ params }: Props) {
           </dl>
         </section>
       ) : null}
+      {service.slug === "remont-ebu" ? <EcuListings /> : null}
       {service.slug === "pokraska" ? <PaintPartners /> : null}
       {related.length > 0 ? (
         <section className="mt-20 border-t border-line pt-16" aria-labelledby="related-works">
