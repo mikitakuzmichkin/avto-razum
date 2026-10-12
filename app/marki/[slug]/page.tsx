@@ -70,7 +70,7 @@ export default async function BrandPage({ params }: Props) {
           <p className="mt-6 text-lg leading-relaxed">{marked(brand.lead, brand.leadMarks)}</p>
           {brand.notes ? (
             <div className="mt-8 border border-line p-6">
-              <p className="text-[11px] uppercase tracking-[0.18em] text-muted">Важно знать</p>
+              <p className="text-[11px] uppercase tracking-[0.18em] text-mark">Важно знать</p>
               <div className="mt-4 space-y-3 text-sm leading-relaxed">
                 {brand.notes.map((note) => (
                   <p key={note}>{note}</p>
@@ -92,11 +92,11 @@ export default async function BrandPage({ params }: Props) {
             className="aspect-video w-full rounded-2xl object-cover"
           />
           <div className="mt-6 border border-line p-6 md:p-8">
-          <p className="text-[11px] uppercase tracking-[0.18em] text-muted">Выполняем</p>
+          <p className="text-[11px] uppercase tracking-[0.18em] text-mark">Выполняем</p>
           <ol className="mt-6 space-y-4">
             {brand.works.map((work, index) => (
               <li key={work} className="flex gap-4 text-sm leading-relaxed">
-                <span className="shrink-0 text-muted">{String(index + 1).padStart(2, "0")}</span>
+                <span className="shrink-0 text-mark">{String(index + 1).padStart(2, "0")}</span>
                 <span>{work}</span>
               </li>
             ))}
