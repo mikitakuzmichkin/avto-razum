@@ -55,15 +55,29 @@ export default async function BrandPage({ params }: Props) {
       </nav>
       <div className="mt-10 grid grid-cols-1 items-start gap-12 lg:grid-cols-2">
         <div>
-          <SiteImage
-            src={brandMark(brand.slug)}
-            alt=""
-            width={240}
-            height={48}
-            unoptimized
-            className="rounded-lg bg-white"
-            style={{ width: "auto", height: "2.25rem", aspectRatio: "auto" }}
-          />
+          {brand.slug === "renault" ? (
+            <span className="inline-flex size-16 items-center justify-center rounded-lg bg-white p-2.5">
+              <SiteImage
+                src={brandMark(brand.slug)}
+                alt=""
+                width={2377}
+                height={2503}
+                unoptimized
+                className="max-h-full max-w-full object-contain"
+                style={{ width: "auto", height: "auto", maxHeight: "100%", maxWidth: "100%", aspectRatio: "auto" }}
+              />
+            </span>
+          ) : (
+            <SiteImage
+              src={brandMark(brand.slug)}
+              alt=""
+              width={240}
+              height={48}
+              unoptimized
+              className="rounded-lg bg-white"
+              style={{ width: "auto", height: "2.25rem", aspectRatio: "auto" }}
+            />
+          )}
           <h1 className="mt-6 font-serif text-5xl leading-[0.95] md:text-6xl">
             {marked(brand.title, brand.titleMarks)}
           </h1>
