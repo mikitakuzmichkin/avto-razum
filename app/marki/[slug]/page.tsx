@@ -9,20 +9,6 @@ import { breadcrumbSchema } from "@/lib/schema";
 import { marked } from "@/lib/marked";
 import { pageMetadata } from "@/lib/seo";
 
-const leadMarks = [
-  "Отключение AdBlue эмулятором и программно",
-  "ремонт электронных блоков управления",
-  "сажевого фильтра",
-  "Координатор C007",
-  "250 и 500 kb",
-  "блоков EDC",
-  "дверных модулей",
-  "блоков MR, MCM, ADM, FR и KI",
-  "тонкой защитой металла",
-  "холодными кабинами",
-  "механическими сиденьями",
-];
-
 type Props = {
   params: Promise<{ slug: string }>;
 };
@@ -79,9 +65,9 @@ export default async function BrandPage({ params }: Props) {
             style={{ width: "auto", height: "2.25rem", aspectRatio: "auto" }}
           />
           <h1 className="mt-6 font-serif text-5xl leading-[0.95] md:text-6xl">
-            {marked(brand.title, brand.title.includes(": ") ? [brand.title.split(": ").slice(1).join(": ")] : [])}
+            {marked(brand.title, brand.titleMarks)}
           </h1>
-          <p className="mt-6 text-lg leading-relaxed">{marked(brand.lead, leadMarks)}</p>
+          <p className="mt-6 text-lg leading-relaxed">{marked(brand.lead, brand.leadMarks)}</p>
           {brand.notes ? (
             <div className="mt-8 border border-line p-6">
               <p className="text-[11px] uppercase tracking-[0.18em] text-muted">Важно знать</p>

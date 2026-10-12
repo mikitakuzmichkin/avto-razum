@@ -21,7 +21,7 @@ export default function ContactsPage() {
         <p className="text-[11px] uppercase tracking-[0.22em] text-muted">{site.city}</p>
         <h1 className="mt-4 font-serif text-5xl leading-[0.95] md:text-7xl">Контакты</h1>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed">
-          {marked("Заявка с формы приходит мастеру. Или можно написать в Instagram.", ["мастеру", "Instagram"])}
+          {marked("Заявка с формы приходит мастеру. Или можно написать в Instagram.", ["Instagram"])}
         </p>
       </header>
       <div className="mt-14 grid grid-cols-1 gap-16 lg:grid-cols-12">

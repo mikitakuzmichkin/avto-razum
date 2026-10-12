@@ -8,7 +8,7 @@ export function marked(text: string, marks: string[] = []): ReactNode {
     .join("|");
   return text.split(new RegExp(`(${pattern})`, "g")).map((part, index) =>
     marks.includes(part) ? (
-      <span key={index} className="text-muted">
+      <span key={index} className="text-mark">
         {part}
       </span>
     ) : (

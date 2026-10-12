@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { SiteImage } from "@/components/SiteImage";
 import Link from "next/link";
 import { brandMark, brands } from "@/content/brands";
-import { marked } from "@/lib/marked";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -17,8 +16,8 @@ export default function BrandsPage() {
     <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
       <p className="text-[11px] uppercase tracking-[0.22em] text-muted">Минск</p>
       <h1 className="mt-4 font-serif text-5xl leading-[0.95] md:text-7xl">Марки</h1>
-      <p className="mt-6 max-w-2xl text-lg leading-relaxed">
-        {marked("Нажмите марку, чтобы открыть работы именно по ней.", ["марку"])}
+      <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
+        Нажмите марку, чтобы открыть работы именно по ней.
       </p>
       <ul className="mt-12 grid grid-cols-1 gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
         {brands.map((brand) => (
