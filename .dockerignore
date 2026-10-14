@@ -2,7 +2,8 @@ node_modules
 .next
 .git
 .audi-lit.png
-scripts
+scripts/*
+!scripts/write-seo.mjs
 .env*
 !.env.example
 *.md
