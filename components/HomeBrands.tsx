@@ -2,8 +2,23 @@ import { SiteImage } from "@/components/SiteImage";
 import Link from "next/link";
 import { brandMark, brands, type Brand } from "@/content/brands";
 
-const cardSlugs = ["man", "mercedes-benz", "scania", "volvo", "renault", "daf", "iveco", "maz", "kamaz"] as const;
-const chineseSlugs = ["dongfeng", "faw", "foton", "jac", "shacman", "sitrak"] as const;
+const cardSlugs = [
+  "man",
+  "mercedes-benz",
+  "scania",
+  "volvo",
+  "renault",
+  "daf",
+  "iveco",
+  "maz",
+  "kamaz",
+  "dongfeng",
+  "faw",
+  "foton",
+  "jac",
+  "shacman",
+  "sitrak",
+] as const;
 
 const cardClass =
   "flex h-full flex-col rounded-2xl border border-line bg-white/[0.04] px-3 pb-4 pt-3 transition-colors hover:bg-white/[0.08]";
@@ -44,8 +59,6 @@ function SingleCard({ slug }: { slug: string }) {
 }
 
 export function HomeBrands() {
-  const chinese = chineseSlugs.map((slug) => brandBySlug(slug));
-
   return (
     <section className="border-t border-line" aria-labelledby="brands-heading">
       <div className="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
@@ -66,31 +79,6 @@ export function HomeBrands() {
             <SingleCard key={slug} slug={slug} />
           ))}
         </ul>
-
-        <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-          <p className="shrink-0 text-sm text-muted">Китайские марки:</p>
-          <ul className="flex flex-wrap gap-2">
-            {chinese.map((brand) => (
-              <li key={brand.slug}>
-                <Link
-                  href={`/marki/${brand.slug}`}
-                  aria-label={brand.name}
-                  className="flex h-14 items-center rounded-xl bg-white px-3.5 transition-opacity hover:opacity-80"
-                >
-                  <SiteImage
-                    src={brandMark(brand.slug)}
-                    alt=""
-                    width={720}
-                    height={160}
-                    unoptimized
-                    className="h-8 w-auto"
-                    style={{ width: "auto", height: "2rem", aspectRatio: "auto" }}
-                  />
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
       </div>
     </section>
   );

@@ -1,3 +1,4 @@
+import { PhotoLightbox } from "@/components/PhotoLightbox";
 import { SiteImage } from "@/components/SiteImage";
 import { publicPath } from "@/lib/public-path";
 import Link from "next/link";
@@ -11,7 +12,7 @@ function frameClass(work: Work) {
   return "aspect-[4/3]";
 }
 
-export function WorkGrid({ items }: { items: Work[] }) {
+export function WorkGrid({ items, popup = false }: { items: Work[]; popup?: boolean }) {
   return (
     <ul className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2">
       {items.map((work) => {
@@ -21,7 +22,7 @@ export function WorkGrid({ items }: { items: Work[] }) {
         const frame = `relative block bg-black ${frameClass(work)}`;
         return (
           <li key={work.slug} className={span}>
-            <figure>
+            <figure id={`work-${work.slug}`} className="scroll-mt-28">
               {work.video ? (
                 <div className={verticalVideo ? "md:flex md:justify-center" : undefined}>
                   <div className={frame}>
@@ -36,8 +37,20 @@ export function WorkGrid({ items }: { items: Work[] }) {
                     />
                   </div>
                 </div>
+              ) : popup ? (
+                <div className={`group overflow-hidden ${frame}`}>
+                  <PhotoLightbox src={work.image} alt={work.imageAlt}>
+                    <SiteImage
+                      src={work.image}
+                      alt=""
+                      fill
+                      sizes={work.wide ? "100vw" : "(min-width: 768px) 50vw, 100vw"}
+                      className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                    />
+                  </PhotoLightbox>
+                </div>
               ) : (
-                <Link href={`/uslugi/${work.service}`} className={`group overflow-hidden ${frame}`}>
+                <Link href={`/uslugi/${work.service}#work-${work.slug}`} className={`group overflow-hidden ${frame}`}>
                   <SiteImage
                     src={work.image}
                     alt={work.imageAlt}
@@ -49,9 +62,9 @@ export function WorkGrid({ items }: { items: Work[] }) {
               )}
               <figcaption className="mt-4 flex items-baseline justify-between gap-4">
                 <span className="font-serif text-2xl md:text-3xl">{work.title}</span>
-                {service ? (
+                {service && !popup ? (
                   <Link
-                    href={`/uslugi/${service.slug}`}
+                    href={`/uslugi/${service.slug}#work-${work.slug}`}
                     className="shrink-0 text-[11px] uppercase tracking-[0.18em] text-muted hover:text-foreground"
                   >
                     {service.title}

@@ -78,7 +78,7 @@ export default async function ServicePage({ params }: Props) {
             {String(index + 1).padStart(2, "0")}
           </p>
           <h1 className="mt-4 max-w-full text-balance font-serif text-4xl leading-[1.2] hyphens-auto sm:text-5xl lg:text-[2.5rem] xl:text-[2.85rem]">
-            {marked(service.seoTitle, service.titleMarks)}
+            {marked(service.seoTitle, service.titleMarks, service.titleNowrap)}
           </h1>
           <p className="mt-6 text-lg leading-relaxed">{marked(service.lead, service.leadMarks)}</p>
           <ul className="mt-8 space-y-3 border-t border-line pt-6">
@@ -158,7 +158,7 @@ export default async function ServicePage({ params }: Props) {
             Примеры
           </h2>
           <div className="mt-10">
-            <WorkGrid items={related} />
+            <WorkGrid items={related} popup />
           </div>
         </section>
       ) : null}

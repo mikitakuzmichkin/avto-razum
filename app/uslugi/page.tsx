@@ -6,7 +6,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Услуги автотехцентра в Минске",
   description:
-    "Услуги AVTO RAZUM в Минске: антикор кабин и рам, электрика, тепло и шум, ремонт ЭБУ, отключение AdBlue, пневмосиденья, удаление DPF, покраска.",
+    "Услуги AVTO RAZUM в Минске: антикор кабин и рам, электрика, тепло и шум, ремонт ЭБУ, отключение AdBlue, пневмосиденья, удаление DPF, гидрофикация, покраска.",
   path: "/uslugi",
 });
 

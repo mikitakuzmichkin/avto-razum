@@ -20,8 +20,8 @@ export function FaqList({ items }: { items: FaqItem[] }) {
                 onClick={() => setOpen(expanded ? null : index)}
               >
                 <span className="font-serif text-2xl leading-tight md:text-3xl">{item.question}</span>
-                <span className="pt-1 text-[11px] uppercase tracking-[0.2em] text-muted" aria-hidden="true">
-                  {expanded ? "Скрыть" : "Открыть"}
+                <span className="pt-1 text-sm uppercase tracking-[0.16em] text-muted" aria-hidden="true">
+                  {expanded ? "Скрыть" : "Узнать"}
                 </span>
               </button>
             </h3>

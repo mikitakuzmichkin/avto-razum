@@ -35,7 +35,6 @@ const sceneCss = `
   width: 146%;
   transform: translateY(-50%) scale(1.04);
   transform-origin: center center;
-  mix-blend-mode: lighten;
 }
 .audi-car {
   opacity: 0;
@@ -95,7 +94,7 @@ export function HeadlightCar() {
       <div className="audi-frame">
         <SiteImage
           ref={carRef}
-          src="/images/hero/audi-blue.jpg"
+          src="/images/hero/audi-blue.png"
           alt=""
           width={1280}
           height={720}
@@ -104,7 +103,7 @@ export function HeadlightCar() {
           className="audi-car h-auto w-full"
         />
         <SiteImage
-          src="/images/hero/audi-blue.jpg"
+          src="/images/hero/audi-blue.png"
           alt=""
           width={1280}
           height={720}

@@ -1,4 +1,3 @@
-import { SiteImage } from "@/components/SiteImage";
 import Link from "next/link";
 import { FaqList } from "@/components/FaqList";
 import { HeadlightCar } from "@/components/HeadlightCar";
@@ -6,11 +5,10 @@ import { HomeBrands } from "@/components/HomeBrands";
 import { JsonLd } from "@/components/JsonLd";
 import { LeadForm } from "@/components/LeadForm";
 import { ServiceRows } from "@/components/ServiceList";
-import { WorkGrid } from "@/components/WorkGrid";
+import { HomeWorks } from "@/components/HomeWorks";
 import { buttonClass, buttonGhostClass } from "@/components/styles";
 import { faq } from "@/content/faq";
 import { services } from "@/content/services";
-import { featuredWorks } from "@/content/works";
 import { faqSchema } from "@/lib/schema";
 
 export default function HomePage() {
@@ -18,8 +16,8 @@ export default function HomePage() {
     <>
       <JsonLd data={faqSchema()} />
       <section className="border-b border-line">
-        <div className="relative isolate bg-black">
-        <div className="pointer-events-none absolute inset-0 z-0 hidden overflow-hidden lg:block">
+        <div className="relative bg-black">
+        <div className="pointer-events-none absolute inset-0 z-[2] hidden overflow-hidden lg:block">
           <HeadlightCar />
         </div>
         <div className="relative z-10 mx-auto max-w-6xl px-5 pb-12 pt-8 md:px-8 md:pb-16 md:pt-10">
@@ -45,16 +43,6 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-        </div>
-        <div className="relative aspect-[16/9] max-h-[72vh] w-full overflow-hidden">
-          <SiteImage
-            src="/images/services/antikor.jpg"
-            alt="Рама грузовика после антикоррозийной обработки"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover grayscale"
-          />
         </div>
       </section>
 
@@ -82,7 +70,7 @@ export default function HomePage() {
               Все
             </Link>
           </div>
-          <WorkGrid items={featuredWorks} />
+          <HomeWorks />
         </div>
       </section>
 

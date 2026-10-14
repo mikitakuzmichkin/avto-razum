@@ -16,12 +16,12 @@ export function ServiceRows() {
               {String(index + 1).padStart(2, "0")}
             </span>
             <span className="min-w-0 flex-1">
-              <span className="block font-serif text-3xl leading-none md:text-5xl">
+              <span className="block font-sans text-3xl font-medium leading-none md:text-5xl">
                 {service.title}
               </span>
-              <span className="mt-3 block text-sm text-muted">{service.short}</span>
+              <span className="mt-3 block font-sans text-sm text-muted">{service.short}</span>
             </span>
-            <span className="pt-2 text-[11px] uppercase tracking-[0.2em] text-muted group-hover:text-foreground" aria-hidden="true">
+            <span className="self-center text-2xl leading-none text-muted group-hover:text-foreground md:text-3xl" aria-hidden="true">
               →
             </span>
           </Link>
