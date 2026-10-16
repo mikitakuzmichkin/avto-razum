@@ -7,6 +7,9 @@ import { Logo } from "@/components/Logo";
 import { buttonClass } from "@/components/styles";
 import { brands } from "@/content/brands";
 import { services } from "@/content/services";
+import { site } from "@/content/site";
+
+const phoneHref = `tel:${site.phone.replace(/[^\d+]/g, "")}`;
 
 const links = [
   { href: "/raboty", label: "Работы" },
@@ -191,7 +194,7 @@ export function Header() {
         <div className="hidden min-w-0 flex-1 md:block">
           <BrandMarquee />
         </div>
-        <div className="ml-auto flex shrink-0 items-center gap-8">
+        <div className="ml-auto flex min-w-0 flex-1 items-center md:flex-none md:gap-8">
           <nav className="hidden items-center gap-8 md:flex" aria-label="Основное меню">
             {links.map((link) => {
               const active = pathname === link.href || pathname.startsWith(`${link.href}/`);
@@ -208,18 +211,23 @@ export function Header() {
               );
             })}
           </nav>
-          <Link href="/kontakty#zayavka" className="hidden md:inline-flex">
-            <span className={buttonClass}>Запись</span>
-          </Link>
-          <button
-            type="button"
-            className="shrink-0 text-sm uppercase tracking-[0.14em] text-foreground md:hidden"
-            aria-expanded={open}
-            aria-controls="mobile-menu"
-            onClick={() => setOpen((value) => !value)}
-          >
-            {open ? "Закрыть" : "Меню"}
-          </button>
+          <div className="flex min-w-0 flex-1 items-center justify-between md:flex-none md:gap-4">
+            <button
+              type="button"
+              className="shrink-0 text-sm uppercase tracking-[0.14em] text-foreground md:hidden"
+              aria-expanded={open}
+              aria-controls="mobile-menu"
+              onClick={() => setOpen((value) => !value)}
+            >
+              {open ? "Закрыть" : "Меню"}
+            </button>
+            <Link href="/kontakty#zayavka" className={buttonClass}>
+              Запись
+            </Link>
+            <a href={phoneHref} className="whitespace-nowrap text-sm font-medium text-foreground">
+              {site.phone}
+            </a>
+          </div>
         </div>
       </div>
       <div className="border-t border-line px-5 py-2.5 md:hidden">
@@ -256,9 +264,6 @@ export function Header() {
               {link.label}
             </Link>
           ))}
-          <Link href="/kontakty#zayavka" onClick={() => setOpen(false)} className={`${buttonClass} my-4 w-full`}>
-            Запись
-          </Link>
         </nav>
       ) : null}
     </header>

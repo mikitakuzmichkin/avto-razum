@@ -5,24 +5,31 @@ import { marked } from "@/lib/marked";
 
 export function ServiceRows() {
   return (
-    <ol>
+    <ol className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
       {services.map((service, index) => (
-        <li key={service.slug} className="border-t border-line">
+        <li key={service.slug} className="min-w-0">
           <Link
             href={`/uslugi/${service.slug}`}
-            className="group flex items-start justify-between gap-6 py-6 md:py-8"
+            className="group flex h-full flex-col border border-line"
           >
-            <span className="w-10 shrink-0 pt-2 text-[11px] tracking-[0.18em] text-muted">
-              {String(index + 1).padStart(2, "0")}
+            <span className="relative block aspect-[5/3] overflow-hidden">
+              <SiteImage
+                src={service.image}
+                alt={service.imageAlt}
+                fill
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+              />
             </span>
-            <span className="min-w-0 flex-1">
-              <span className="block font-sans text-3xl font-medium leading-none md:text-5xl">
+            <span className="flex flex-1 flex-col p-4">
+              <span className="text-xs tracking-[0.16em] text-muted">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <span className="mt-2 font-sans text-lg font-medium leading-tight">
                 {service.title}
               </span>
-              <span className="mt-3 block font-sans text-sm text-muted">{service.short}</span>
-            </span>
-            <span className="self-center text-2xl leading-none text-muted group-hover:text-foreground md:text-3xl" aria-hidden="true">
-              →
+              <span className="mt-2 text-sm leading-relaxed text-muted">{service.short}</span>
+              <span className="mt-auto pt-4 text-sm text-foreground">Подробнее →</span>
             </span>
           </Link>
         </li>
