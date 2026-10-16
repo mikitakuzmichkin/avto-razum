@@ -20,6 +20,7 @@ export const site = {
   mapImage: "/images/map-address.jpg",
   routeUrl: "https://yandex.by/maps/?rtext=~53.816701,27.661619&rtt=auto",
   phone: "+375 (44) 554-25-59",
+  phoneCaption: "Андрей, Пн–сб, 9:00–19:00",
   phoneIsPlaceholder: false,
   address:
     "Минский район, Новодворский сельсовет, агрогородок Новый Двор, Центральная улица, 50",

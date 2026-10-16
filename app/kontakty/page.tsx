@@ -52,6 +52,7 @@ export default function ContactsPage() {
                   {site.phone}
                 </a>
               )}
+              <p className="mt-1 text-sm text-muted">{site.phoneCaption}</p>
             </dd>
           </div>
           <div className="border-t border-line pt-5">

@@ -43,7 +43,10 @@ export function Footer() {
                 Яндекс Карты
               </a>
             </li>
-            <li>{site.phoneIsPlaceholder ? site.phone : <a href={`tel:${site.phone.replace(/[^\d+]/g, "")}`}>{site.phone}</a>}</li>
+            <li>
+              {site.phoneIsPlaceholder ? site.phone : <a href={`tel:${site.phone.replace(/[^\d+]/g, "")}`}>{site.phone}</a>}
+              <p className="text-muted">{site.phoneCaption}</p>
+            </li>
             <li className="text-muted">{site.address}</li>
             <li className="text-muted">{site.hours}</li>
             <li className="text-muted">

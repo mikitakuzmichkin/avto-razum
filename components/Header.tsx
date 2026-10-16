@@ -187,31 +187,31 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-background">
       <div className="header-grain" aria-hidden="true" />
-      <div className="mx-auto flex h-[4.5rem] max-w-6xl items-center gap-6 px-5 md:px-8">
-        <Link href="/" aria-label="AVTO RAZUM, на главную" className="shrink-0">
-          <Logo priority className="h-11 w-auto" />
-        </Link>
-        <div className="hidden min-w-0 flex-1 md:block">
-          <BrandMarquee />
-        </div>
-        <div className="ml-auto flex min-w-0 flex-1 items-center md:flex-none md:gap-8">
-          <nav className="hidden items-center gap-8 md:flex" aria-label="Основное меню">
-            {links.map((link) => {
-              const active = pathname === link.href || pathname.startsWith(`${link.href}/`);
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  aria-current={active ? "page" : undefined}
-                  className={`${topLinkClass} ${active ? "text-foreground" : "text-muted hover:text-foreground"}`}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
-          </nav>
-          <div className="flex min-w-0 flex-1 items-center justify-between md:flex-none md:gap-4">
+      <div className="w-full px-5 md:px-8">
+        <div className="flex min-h-[4.5rem] w-full items-center gap-4 py-2.5 md:gap-8">
+          <Link href="/" aria-label="AVTO RAZUM, на главную" className="shrink-0">
+            <Logo priority className="h-11 w-auto" />
+          </Link>
+          <div className="hidden min-w-0 flex-1 md:block">
+            <BrandMarquee />
+          </div>
+          <div className="ml-auto flex shrink-0 items-center gap-4 md:gap-8">
+            <nav className="hidden items-center gap-8 md:flex" aria-label="Основное меню">
+              {links.map((link) => {
+                const active = pathname === link.href || pathname.startsWith(`${link.href}/`);
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    aria-current={active ? "page" : undefined}
+                    className={`${topLinkClass} ${active ? "text-foreground" : "text-muted hover:text-foreground"}`}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
+            </nav>
             <button
               type="button"
               className="shrink-0 text-sm uppercase tracking-[0.14em] text-foreground md:hidden"
@@ -224,11 +224,16 @@ export function Header() {
             <Link href="/kontakty#zayavka" className={buttonClass}>
               Запись
             </Link>
-            <a href={phoneHref} className="whitespace-nowrap text-sm font-medium text-foreground">
-              {site.phone}
+            <a href={phoneHref} className="hidden shrink-0 text-right leading-tight md:block">
+              <span className="block whitespace-nowrap text-lg font-medium tracking-[0.04em] text-foreground">{site.phone}</span>
+              <span className="mt-0.5 block whitespace-nowrap text-[13px] leading-snug text-muted">{site.phoneCaption}</span>
             </a>
           </div>
         </div>
+        <a href={phoneHref} className="block border-t border-line py-2.5 text-right leading-tight md:hidden">
+          <span className="block text-sm font-medium text-foreground">{site.phone}</span>
+          <span className="mt-0.5 block text-[13px] text-muted">{site.phoneCaption}</span>
+        </a>
       </div>
       <div className="border-t border-line px-5 py-2.5 md:hidden">
         <BrandMarquee />
